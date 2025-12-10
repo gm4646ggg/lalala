@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Мое портфолио - Достижения</title>
+    <style>
+        /* Базовые стили для мобильной адаптации */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Verdana', 'Comic Sans MS', sans-serif;
+            line-height: 1.6;
+            background-color: #000;
+        }
+        
+        /* Стили для модального окна с изображением */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.98);
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            animation: zoomIn 0.3s;
+        }
+        
+        @keyframes zoomIn {
+            from { transform: scale(0.9); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            z-index: 1001;
+            background: rgba(0, 0, 0, 0.5);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+        }
+        
+        .close:hover {
+            color: #008080;
+            background: rgba(0, 0, 0, 0.7);
+        }
+        
+        /* Стили для галереи */
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+        
+        .gallery-item {
+            width: 300px;
+            height: 200px;
+            overflow: hidden;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.3s;
+            border: 3px solid #008080;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.05);
+            border-color: #4CAF50;
+        }
+        
+        .gallery-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .gallery-item:hover .gallery-img {
+            transform: scale(1.1);
+        }
+        
+        /* Стили для групповых заголовков */
+        .group-title {
+            padding-top: 30px;
+            padding-bottom: 10px;
+            text-align: center;
+        }
+        
+        /* Стили для мобильных устройств */
+        @media (max-width: 768px) {
+            /* Адаптивный хедер */
+            #header table {
+                width: 100% !important;
+                padding: 5px !important;
+            }
+            
+            #header tr {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            #header td {
+                display: block;
+                width: 100%;
+                text-align: center;
+                padding: 5px 0 !important;
+            }
+            
+            #header td:first-child {
+                order: 1;
+                width: 100%;
+            }
+            
+            #header td:nth-child(n+3) {
+                order: 2;
+                width: auto;
+                padding: 8px 5px !important;
+            }
+            
+            #header font[face="Comic Sans MS"] {
+                font-size: 24px !important;
+            }
+            
+            #header a font {
+                font-size: 16px !important;
+            }
+            
+            /* Адаптивный заголовок */
+            #achievements-title table {
+                width: 100% !important;
+                padding: 10px !important;
+            }
+            
+            #achievements-title td {
+                padding: 20px 10px !important;
+                height: auto !important;
+            }
+            
+            #achievements-title font {
+                font-size: 24px !important;
+                line-height: 1.3;
+            }
+            
+            /* Адаптивная галерея */
+            .gallery {
+                padding: 10px;
+                gap: 15px;
+            }
+            
+            .gallery-item {
+                width: 100%;
+                max-width: 320px;
+                height: 180px;
+            }
+            
+            /* Адаптивный список навыков */
+            #skills table {
+                width: 100% !important;
+                padding: 10px !important;
+            }
+            
+            #skills td {
+                padding: 15px 10px !important;
+            }
+            
+            #skills font {
+                font-size: 16px !important;
+            }
+            
+            .skills-container {
+                padding: 0 10px;
+            }
+            
+            /* Адаптивное модальное окно */
+            .modal-content {
+                max-width: 100%;
+                max-height: 100%;
+            }
+            
+            .close {
+                font-size: 30px;
+                top: 15px;
+                right: 15px;
+                width: 40px;
+                height: 40px;
+            }
+            
+            /* Общие адаптивные правки */
+            .mobile-hidden {
+                display: none !important;
+            }
+            
+            /* Адаптивные групповые заголовки */
+            .group-title {
+                padding-top: 20px;
+                padding-bottom: 5px;
+            }
+        }
+        
+        /* Стили для очень маленьких экранов */
+        @media (max-width: 480px) {
+            #header td:nth-child(n+3) {
+                width: 50%;
+                padding: 5px !important;
+            }
+            
+            #achievements-title font {
+                font-size: 20px !important;
+            }
+            
+            .gallery-item {
+                height: 150px;
+            }
+            
+            #skills font[face="Comic Sans MS"] {
+                font-size: 18px !important;
+            }
+        }
+        
+        /* Стили для десктопов */
+        @media (min-width: 769px) {
+            #header table {
+                width: 90%;
+                margin: 0 auto;
+            }
+            
+            #achievements-title table,
+            #skills table,
+            #gallery-section table {
+                width: 80%;
+                margin: 0 auto;
+            }
+            
+            .gallery-item {
+                width: 280px;
+                height: 180px;
+            }
+        }
+        
+        /* Дополнительные улучшения */
+        a {
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+        
+        a:hover {
+            opacity: 0.8;
+        }
+        
+        hr {
+            margin: 20px 0;
+            border: 2px solid #008080;
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Стили для списка навыков */
+        .skills-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        
+        .skill-category {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #4CAF50;
+        }
+        
+        .skill-category h3 {
+            color: #4CAF50;
+            margin-bottom: 15px;
+            font-family: Verdana, sans-serif;
+        }
+        
+        .skill-item {
+            color: white;
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+            font-family: Verdana, sans-serif;
+        }
+        
+        .skill-item:before {
+            content: "✓";
+            color: #008080;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        
+        /* Анимация для галереи */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .gallery-item {
+            animation: fadeIn 0.5s ease-out;
+        }
+        
+        /* Центрирование */
+        .center-text {
+            text-align: center;
+        }
+        
+        /* Стили для ссылок контактов */
+        .contact-link a {
+            color: black;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.2);
+            transition: all 0.3s;
+        }
+        
+        .contact-link a:hover {
+            background-color: rgba(255, 255, 255, 0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <!-- Модальное окно для полноэкранного просмотра -->
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <!--Header(start)-->
+    <table id="header" border="0" width="100%" cellpadding="0" cellspacing="0" bgcolor="#008080">
+        <tr>
+            <td>
+                <table border="0" cellpadding="15" cellspacing="0" width="90%" align="center">
+                    <tr>
+                        <td>
+                            <font face="Comic Sans MS" size="6">
+                                <b>Мое портфолио</b>
+                            </font>
+                        </td>
+                        <td width="15%" class="mobile-hidden"></td>
+                        <td>
+                            <a href="index.html" style="text-decoration:none">
+                                <font face="Comic Sans MS" size="5" color="black">
+                                    Дома
+                                </font>
+                            </a>
+                        </td>
+                        <td class="mobile-hidden"></td>
+                        <td class="mobile-hidden"></td>
+                        <td>
+                            <a href="projects.html" style="text-decoration:none">
+                                <font face="Comic Sans MS" size="5" color="black">
+                                    Грамоты
+                                </font>
+                            </a>
+                        </td>
+                        <td class="mobile-hidden"></td>
+                        <td>
+                            <a href="achievements.html" style="text-decoration:none">
+                                <font face="Comic Sans MS" size="5" color="black">
+                                    Достижения
+                                </font>
+                            </a>
+                        </td>
+                        <td class="mobile-hidden"></td>
+                        <td>
+                            <a href="contact.html" style="text-decoration:none">
+                                <font face="Comic Sans MS" size="5" color="black">
+                                    Контакты
+                                </font>
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <!--Header(end)-->
+
+    <!--Achievements Title(start)-->
+    <table id="achievements-title" border="0" width="100%" cellpadding="0" cellspacing="0" bgcolor="black">
+        <tr>
+            <td>
+                <table border="0" cellpadding="15" cellspacing="0" width="80%" align="center">
+                    <tr>
+                        <td height="150" align="center" valign="middle">
+                            <font face="Comic Sans MS" size="7" color="#008080">
+                                Мои достижения
+                            </font>
+                            <br><br>
+                            <font face="Verdana" size="5" color="#4CAF50">
+                                Примеры работ и освоенные технологии
+                            </font>
+                            <br><br>
+                            <font face="Verdana" size="4" color="white">
+                                Нажмите на изображение для просмотра в полноэкранном режиме
+                            </font>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <!--Achievements Title(end)-->
+
+    <!--Skills Section(start)-->
+    <table id="skills" border="0" width="100%" cellpadding="0" cellspacing="0" bgcolor="black">
+        <tr>
+            <td>
+                <table border="0" cellpadding="15" cellspacing="0" width="80%" align="center">
+                    <tr>
+                        <td align="center" valign="middle">
+                            <font face="Comic Sans MS" size="5" color="white">
+                                <b>Я научился работать в следующих технологиях:</b>
+                            </font>
+                            <br><br>
+                            
+                            <div class="skills-list">
+                                <div class="skill-category">
+                                    <h3>Графические редакторы</h3>
+                                    <div class="skill-item">Adobe Photoshop</div>
+                                    <div class="skill-item">CorelDraw</div>
+                                </div>
+                                
+                                <div class="skill-category">
+                                    <h3>Базы данных и программирование</h3>
+                                    <div class="skill-item">Microsoft Access</div>
+                                    <div class="skill-item">1С:Enterprise</div>
+                                    <div class="skill-item">SQL (MySQL, PostgreSQL)</div>
+                                    <div class="skill-item">Python</div>
+                                </div>
+                                
+                                <div class="skill-category">
+                                    <h3>Веб-технологии</h3>
+                                    <div class="skill-item">HTML и CSS</div>
+                                    <div class="skill-item">JavaScript</div>
+                                    <div class="skill-item">Git и GitHub</div>
+                                </div>
+                            </div>
+                            
+                            <br>
+                            <font face="Verdana" size="4" color="#4CAF50">
+                                <i>"Обучение - это не то, что вы получаете случайно. Это то, к чему вы стремитесь со страстью и делаете с усердием."</i>
+                            </font>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <!--Skills Section(end)-->
+
+    <hr>
+
+    <!--Gallery Section(start)-->
+    <table id="gallery-section" border="0" width="100%" cellpadding="0" cellspacing="0" bgcolor="black">
+        <tr>
+            <td>
+                <table border="0" cellpadding="15" cellspacing="0" width="80%" align="center">
+                    <tr>
+                        <td align="center" valign="middle">
+                            <font face="Comic Sans MS" size="6" color="#008080">
+                                <b>Примеры моих работ</b>
+                            </font>
+                            <br><br>
+                            <font face="Verdana" size="4" color="white">
+                                Нажмите на изображение для просмотра в полноэкранном режиме
+                            </font>
+                        </td>
+                    </tr>
+                    
+                    <!-- Группа 1: Adobe Photoshop -->
+                    <tr>
+                        <td class="group-title">
+                            <font face="Verdana" size="4" color="white">
+                                Навыки работы с Adobe Photoshop. Обработка фото
+                            </font>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td align="center">
+                            <div class="gallery">
+                                <!-- Пример работы 1 -->
+                                <div class="gallery-item" onclick="openModal('imges/Авто.png')" style="animation-delay: 0.1s">
+                                    <img src="imges/Авто.png" alt="Навыки работы с Adobe Photoshop. Обработка фото" class="gallery-img">
+                                </div>
+                                
+                                <!-- Пример работы 2 -->
+                                <div class="gallery-item" onclick="openModal('imges/Подсолнух.png')" style="animation-delay: 0.2s">
+                                    <img src="imges/Подсолнух.png" alt="Навыки работы с Adobe Photoshop. Обработка фото" class="gallery-img">
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                    <!-- Группа 2: MySQL -->
+                    <tr>
+                        <td class="group-title">
+                            <font face="Verdana" size="4" color="white">
+                                Базы данных и программирование MySQL
+                            </font>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td align="center">
+                            <div class="gallery">
+                                <!-- Пример работы 3 -->
+                                <div class="gallery-item" onclick="openModal('imges/sql.png')" style="animation-delay: 0.3s">
+                                    <img src="imges/sql.png" alt="Базы данных и программирование MySQL" class="gallery-img">
+                                </div>
+                                
+                                <!-- Пример работы 4 -->
+                                <div class="gallery-item" onclick="openModal('imges/sql1.png')" style="animation-delay: 0.4s">
+                                    <img src="imges/sql1.png" alt="Базы данных и программирование MySQL" class="gallery-img">
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                    <!-- Группа 3: Python -->
+                    <tr>
+                        <td class="group-title">
+                            <font face="Verdana" size="4" color="white">
+                                Приложение для определения времени года
+                            </font>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td align="center">
+                            <div class="gallery">
+                                <!-- Пример работы 5 -->
+                                <div class="gallery-item" onclick="openModal('imges/pr1.jpg')" style="animation-delay: 0.5s">
+                                    <img src="imges/pr1.jpg" alt="Приложение для определения времени года" class="gallery-img">
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                    <!-- Заключительный текст -->
+                    <tr>
+                        <td align="center" style="padding-top: 30px;">
+                            <font face="Verdana" size="4" color="white">
+                                Каждая работа представляет собой результат изучения новой технологии и применения знаний на практике.
+                                В процессе создания этих проектов я развивал не только технические навыки, но и творческое мышление.
+                            </font>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <!--Gallery Section(end)-->
+
+    <!--JavaScript для модального окна-->
+    <script>
+        // Получаем модальное окно
+        const modal = document.getElementById("imageModal");
+        const modalImg = document.getElementById("modalImage");
+        const closeBtn = document.getElementsByClassName("close")[0];
+        
+        // Функция открытия модального окна
+        function openModal(imageSrc) {
+            modal.style.display = "flex";
+            modalImg.src = imageSrc;
+            
+            // Предотвращаем прокрутку страницы под модальным окном
+            document.body.style.overflow = "hidden";
+        }
+        
+        // Закрытие по клику на крестик
+        closeBtn.onclick = function() {
+            modal.style.display = "none";
+            document.body.style.overflow = "auto";
+        }
+        
+        // Закрытие по клику вне изображения
+        modal.onclick = function(event) {
+            if (event.target === modal) {
+                modal.style.display = "none";
+                document.body.style.overflow = "auto";
+            }
+        }
+        
+        // Закрытие по нажатию клавиши Escape
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape' && modal.style.display === "flex") {
+                modal.style.display = "none";
+                document.body.style.overflow = "auto";
+            }
+        });
+        
+        // Закрытие по клику на само изображение (опционально)
+        modalImg.onclick = function(event) {
+            event.stopPropagation();
+            modal.style.display = "none";
+            document.body.style.overflow = "auto";
+        }
+        
+        // Анимация для элементов галереи при загрузке
+        document.addEventListener('DOMContentLoaded', function() {
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            galleryItems.forEach((item, index) => {
+                item.style.animationDelay = `${index * 0.1}s`;
+            });
+        });
+    </script>
+        <table id="footer" border="0" width="100%" cellpadding="0" cellspacing="0" bgcolor="#008080">
+        <tr>
+            <td>
+                <table border="0" cellpadding="15" cellspacing="0" width="90%" align="center">
+                    <tr>
+                        <td width="33%" align="center" valign="top">
+                            <font face="Verdana" size="4" color="black">
+                                <b>Телефон:</b><br>
+                                <div class="contact-link">
+                                    <a href="tel:+79146128011">+7 (914) 612-80-11</a>
+                                </div>
+                            </font>
+                        </td>
+
+                        <td width="33%" align="center" valign="top">
+                            <font face="Verdana" size="4" color="black">
+                                <b>ВКонтакте:</b><br>
+                                <div class="contact-link">
+                                    <a href="https://vk.com/danilkkaaaa" target="_blank" rel="noopener noreferrer">vk.com/danilkkaaaa</a>
+                                </div>
+                            </font>
+                        </td>
+
+                        <td width="33%" align="center" valign="top">
+                            <font face="Verdana" size="4" color="black">
+                                <b>Email:</b><br>
+                                <div class="contact-link">
+                                    <a href="mailto:Leonardov2006@yandex.ru">Leonardov2006@yandex.ru</a>
+                                </div>
+                            </font>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

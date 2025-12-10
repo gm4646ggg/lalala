@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Мое портфолио - Главная</title>
+    <style>
+        /* Базовые стили для мобильной адаптации */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Verdana', 'Comic Sans MS', sans-serif;
+            line-height: 1.6;
+        }
+        
+        /* Стили для футера */
+        #footer {
+            margin-top: 30px;
+        }
+        
+        #footer table {
+            width: 100%;
+        }
+        
+        .contact-link {
+            display: inline-block;
+            margin: 5px 0;
+            transition: all 0.3s;
+        }
+        
+        .contact-link:hover {
+            transform: translateY(-2px);
+            text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+        
+        /* Стили для мобильных устройств */
+        @media (max-width: 768px) {
+            /* Адаптивный хедер */
+            #header table {
+                width: 100% !important;
+                padding: 5px !important;
+            }
+            
+            #header tr {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            #header td {
+                display: block;
+                width: 100%;
+                text-align: center;
+                padding: 5px 0 !important;
+            }
+            
+            #header td:first-child {
+                order: 1;
+                width: 100%;
+            }
+            
+            #header td:nth-child(n+3) {
+                order: 2;
+                width: auto;
+                padding: 8px 5px !important;
+            }
+            
+            #header font[face="Comic Sans MS"] {
+                font-size: 24px !important;
+            }
+            
+            #header a font {
+                font-size: 16px !important;
+            }
+            
+            /* Адаптивная главная секция */
+            #home, #about {
+                padding: 15px !important;
+            }
+            
+            #home table, #about table {
+                width: 100% !important;
+                padding: 0 !important;
+            }
+            
+            #home h3 font, #home h2 font {
+                font-size: 18px !important;
+                line-height: 1.4;
+            }
+            
+            #home p font {
+                font-size: 16px !important;
+            }
+            
+            /* Адаптивная секция "О себе" */
+            #about tr:first-child td {
+                padding: 20px 0 !important;
+            }
+            
+            #about font[color="#008080"] {
+                font-size: 24px !important;
+            }
+            
+            #about tr:nth-child(2) {
+                display: flex;
+                flex-direction: column;
+            }
+            
+            #about tr:nth-child(2) td {
+                width: 100% !important;
+                display: block;
+            }
+            
+            #about tr:nth-child(2) td:first-child {
+                margin-bottom: 20px;
+            }
+            
+            #about img {
+                max-width: 100% !important;
+                height: auto !important;
+                width: 250px !important;
+            }
+            
+            #about td[width="60%"] font {
+                font-size: 16px !important;
+                text-align: justify;
+            }
+            
+            /* Адаптивный футер */
+            #footer table {
+                width: 100% !important;
+                padding: 10px !important;
+            }
+            
+            #footer tr {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            #footer td {
+                width: 100% !important;
+                display: block;
+                text-align: center;
+                padding: 15px 10px !important;
+                margin-bottom: 10px;
+            }
+            
+            #footer font {
+                font-size: 16px !important;
+            }
+            
+            .contact-link {
+                display: block;
+                margin: 8px 0;
+            }
+            
+            /* Общие адаптивные правки */
+            .mobile-hidden {
+                display: none !important;
+            }
+            
+            table, tbody, tr, td {
+                display: block;
+                width: 100% !important;
+            }
+        }
+        
+        /* Стили для очень маленьких экранов */
+        @media (max-width: 480px) {
+            #header td:nth-child(n+3) {
+                width: 50%;
+                padding: 5px !important;
+            }
+            
+            #home h3 font {
+                font-size: 16px !important;
+            }
+            
+            #home h2 font {
+                font-size: 18px !important;
+            }
+            
+            #about font[color="#008080"] {
+                font-size: 20px !important;
+            }
+            
+            #footer td {
+                padding: 10px 5px !important;
+            }
+            
+            #footer font {
+                font-size: 14px !important;
+            }
+        }
+        
+        /* Стили для десктопов (сохраняем оригинальный дизайн) */
+        @media (min-width: 769px) {
+            #header table {
+                width: 90%;
+                margin: 0 auto;
+            }
+            
+            #home table, #about table {
+                width: 90%;
+                margin: 0 auto;
+            }
+            
+            #about table {
+                width: 80% !important;
+            }
+            
+            /* Футер для десктопов */
+            #footer table {
+                width: 90%;
+                margin: 0 auto;
+            }
+            
+            #footer td {
+                width: 33.33% !important;
+                vertical-align: top;
+                padding: 20px !important;
+                text-align: center;
+            }
+        }
+        
+        /* Дополнительные улучшения */
+        a {
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+        
+        a:hover {
+            opacity: 0.8;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        
+        hr {
+            margin: 15px 0;
+        }
+        
+        /* Стили для ссылок контактов */
+        .contact-link a {
+            color: black;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.2);
+            transition: all 0.3s;
+        }
+        
+        .contact-link a:hover {
+            background-color: rgba(255, 255, 255, 0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <!--Header(start)-->
+    <table id="header" border="0" width="100%" cellpadding="0" cellspacing="0" bgcolor="#008080">
+        <tr>
+            <td>
+                <table border="0" cellpadding="15" cellspacing="0" width="90%" align="center">
+                    <tr>
+                        <td>
+                            <font face="Comic Sans MS" size="6">
+                                <b>Мое портфолио</b>
+                            </font>
+                        </td>
+                        <td width="15%" class="mobile-hidden"></td>
+                        <td>
+                            <a href="index.html" style="text-decoration:none">
+                                <font face="Comic Sans MS" size="5" color="black">
+                                    Дома
+                                </font>
+                            </a>
+                        </td>
+                        <td class="mobile-hidden"></td>
+                        <td class="mobile-hidden"></td>
+                        <td>
+                            <a href="projects.html" style="text-decoration:none">
+                                <font face="Comic Sans MS" size="5" color="black">
+                                    Грамоты
+                                </font>
+                            </a>
+                        </td>
+                        <td class="mobile-hidden"></td>
+                        <td>
+                            <a href="achievements.html" style="text-decoration:none">
+                                <font face="Comic Sans MS" size="5" color="black">
+                                    Достижения
+                                </font>
+                            </a>
+                        </td>
+                        <td class="mobile-hidden"></td>
+                        <td>
+                            <a href="contact.html" style="text-decoration:none">
+                                <font face="Comic Sans MS" size="5" color="black">
+                                    Контакты
+                                </font>
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <!--Header(end)-->
+
+    <!--Home(start)-->
+    <table id="home" border="1" width="100%" cellpadding="20" cellspacing="0" bgcolor="black">
+        <tr>
+            <td>
+                <table border="0" cellpadding="15" cellspacing="0" width="90%" align="center">
+                    <tr>
+                        <td align="center" valign="middle">
+                            <h3>
+                                <font face="Comic Sans MS" size="6" color="#ffffff">
+                                    Мне приятно что вы зашли сюда!
+                                </font>
+                            </h3>
+                            <h2>
+                                <font face="Verdana" size="6" color="#4CAF50">
+                                    Электронное портфолио студента
+                                </font>
+                            </h2>
+                            <p>
+                                <font face="Verdana" size="4" color="white">
+                                    Специальность: "Разработчик баз данных"
+                                </font>
+                            </p>
+                            <p>
+                                <font face="Verdana" size="4" color="white">
+                                    Амурский педагогический колледж
+                                </font>
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    
+    <table id="about" border="0" width="100%" cellpadding="0" cellspacing="0" bgcolor="black">
+        <tr>
+            <td>
+                <table border="0" cellpadding="15" cellspacing="0" width="80%" align="center">
+                    <tr>
+                        <td height="180" align="center" valign="middle" colspan="2">
+                            <font face="Verdana" size="7" color="#008080">
+                                Немного расскажу о себе.
+                            </font>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td width="40%" align="center">
+                            <img src="imges/6.jpg" width="350" alt="Фото Даниила" />
+                        </td>
+
+                        <td width="60%">
+                            <font face="Verdana" size="4" color="white">
+                                Всем привет. Мне очень приятно, что вы зашли на мой сайт электронного портфолио. Вам несложно - мне приятно!
+                                <hr color="#008080" />
+                                Меня зовут Даниил — я студент четвертого курса по специальности "Разработчик баз данных" Амурского педагогического колледжа. Я выбрал эту специальность, поскольку она одна из самых востребованных и интересных в наше время.
+                                Пока что я тольку учусь создавать сайты, разрабатывать базы данных, а так же работать в различных приложеный для фотошопа, таких как: adobe photoshop, coreldraw.
+                                <hr color="black">
+                                Данный сайт элекронного портфолио является самой первой и в одно время серьезной работой, с использованием языка HTML.
+                                Всем спасибо, что прочитали немного обо мне, а теперь можете изучить остальные разделы моего сайта.
+                            </font>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <!--About(end)-->
+
+    <!--Footer(start)-->
+    <table id="footer" border="0" width="100%" cellpadding="0" cellspacing="0" bgcolor="#008080">
+        <tr>
+            <td>
+                <table border="0" cellpadding="15" cellspacing="0" width="90%" align="center">
+                    <tr>
+                        <td width="33%" align="center" valign="top">
+                            <font face="Verdana" size="4" color="black">
+                                <b>Телефон:</b><br>
+                                <div class="contact-link">
+                                    <a href="tel:+79146128011">+7 (914) 612-80-11</a>
+                                </div>
+                            </font>
+                        </td>
+
+                        <td width="33%" align="center" valign="top">
+                            <font face="Verdana" size="4" color="black">
+                                <b>ВКонтакте:</b><br>
+                                <div class="contact-link">
+                                    <a href="https://vk.com/danilkkaaaa" target="_blank" rel="noopener noreferrer">vk.com/danilkkaaaa</a>
+                                </div>
+                            </font>
+                        </td>
+
+                        <td width="33%" align="center" valign="top">
+                            <font face="Verdana" size="4" color="black">
+                                <b>Email:</b><br>
+                                <div class="contact-link">
+                                    <a href="mailto:Leonardov2006@yandex.ru">Leonardov2006@yandex.ru</a>
+                                </div>
+                            </font>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <!--Footer(end)-->
+    
+</body>
+</html>

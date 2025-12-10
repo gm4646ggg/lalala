@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Мое портфолио - Грамоты</title>
+    <style>
+        /* Базовые стили для мобильной адаптации */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Verdana', 'Comic Sans MS', sans-serif;
+            line-height: 1.6;
+            background-color: #000;
+        }
+        
+        /* Стили для модального окна с изображением - ТОЛЬКО ИЗОБРАЖЕНИЕ */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.98);
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            animation: zoomIn 0.3s;
+        }
+        
+        @keyframes zoomIn {
+            from { transform: scale(0.9); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            z-index: 1001;
+            background: rgba(0, 0, 0, 0.5);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+        }
+        
+        .close:hover {
+            color: #008080;
+            background: rgba(0, 0, 0, 0.7);
+        }
+        
+        /* Стили для мобильных устройств */
+        @media (max-width: 768px) {
+            /* Адаптивный хедер */
+            #header table {
+                width: 100% !important;
+                padding: 5px !important;
+            }
+            
+            #header tr {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            #header td {
+                display: block;
+                width: 100%;
+                text-align: center;
+                padding: 5px 0 !important;
+            }
+            
+            #header td:first-child {
+                order: 1;
+                width: 100%;
+            }
+            
+            #header td:nth-child(n+3) {
+                order: 2;
+                width: auto;
+                padding: 8px 5px !important;
+            }
+            
+            #header font[face="Comic Sans MS"] {
+                font-size: 24px !important;
+            }
+            
+            #header a font {
+                font-size: 16px !important;
+            }
+            
+            /* Адаптивный заголовок страницы */
+            #certificates-title table {
+                width: 100% !important;
+                padding: 10px !important;
+            }
+            
+            #certificates-title td {
+                padding: 20px 10px !important;
+                height: auto !important;
+            }
+            
+            #certificates-title font {
+                font-size: 24px !important;
+                line-height: 1.3;
+            }
+            
+            /* Адаптивная сетка грамот */
+            #certificates-grid table {
+                width: 100% !important;
+                padding: 10px !important;
+            }
+            
+            #certificates-grid tr {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            #certificates-grid td {
+                width: 100% !important;
+                max-width: 320px;
+                display: block;
+                margin-bottom: 30px;
+                text-align: center;
+                padding: 10px !important;
+            }
+            
+            .certificate-item img {
+                max-width: 100% !important;
+                height: auto !important;
+                width: 280px !important;
+                border: 3px solid #008080;
+                cursor: pointer;
+            }
+            
+            .certificate-item p {
+                font-size: 16px !important;
+                padding: 0 10px;
+                margin-top: 10px;
+            }
+            
+            /* Адаптивный подвал */
+            #certificates-footer table {
+                width: 100% !important;
+                padding: 10px !important;
+            }
+            
+            #certificates-footer td {
+                padding: 15px 10px !important;
+            }
+            
+            #certificates-footer font {
+                font-size: 16px !important;
+                text-align: justify;
+            }
+            
+            /* Адаптивное модальное окно */
+            .modal-content {
+                max-width: 100%;
+                max-height: 100%;
+            }
+            
+            .close {
+                font-size: 30px;
+                top: 15px;
+                right: 15px;
+                width: 40px;
+                height: 40px;
+            }
+            
+            /* Общие адаптивные правки */
+            .mobile-hidden {
+                display: none !important;
+            }
+        }
+        
+        /* Стили для очень маленьких экранов */
+        @media (max-width: 480px) {
+            #header td:nth-child(n+3) {
+                width: 50%;
+                padding: 5px !important;
+            }
+            
+            #certificates-title font {
+                font-size: 20px !important;
+            }
+            
+            .certificate-item img {
+                width: 250px !important;
+            }
+            
+            .certificate-item p font {
+                font-size: 14px !important;
+            }
+        }
+        
+        /* Стили для десктопов */
+        @media (min-width: 769px) {
+            #header table {
+                width: 90%;
+                margin: 0 auto;
+            }
+            
+            #certificates-title table,
+            #certificates-grid table,
+            #certificates-footer table {
+                width: 95%;
+                margin: 0 auto;
+            }
+            
+            .certificate-item img {
+                width: 100%;
+                max-width: 280px;
+                height: 200px;
+                object-fit: cover;
+                border: 3px solid #008080;
+                transition: transform 0.3s;
+                cursor: pointer;
+            }
+            
+            .certificate-item img:hover {
+                transform: scale(1.05);
+                border-color: #4CAF50;
+            }
+            
+            /* Равномерное распределение грамот в сетке */
+            #certificates-grid td {
+                width: 33.33% !important;
+                vertical-align: top;
+                padding: 15px !important;
+            }
+            
+            #certificates-grid tr {
+                display: table-row;
+            }
+        }
+        
+        /* Дополнительные улучшения */
+        a {
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+        
+        a:hover {
+            opacity: 0.8;
+        }
+        
+        hr {
+            margin: 15px 0;
+            border: 1px solid #008080;
+        }
+        
+        /* Стили для грамот */
+        .certificate-item {
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            transition: all 0.3s;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .certificate-item:hover {
+            background-color: rgba(0, 128, 128, 0.1);
+            transform: translateY(-5px);
+        }
+        
+        .certificate-item p {
+            margin-top: 15px;
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Центрирование текста */
+        .center-text {
+            text-align: center;
+        }
+        
+        /* Равномерное распределение для сетки */
+        .certificates-table {
+            width: 100% !important;
+            table-layout: fixed !important;
+        }
+        
+        .certificates-table td {
+            text-align: center !important;
+            vertical-align: top !important;
+            padding: 10px !important;
+        }
+        
+        /* Заголовок для грамот без описания */
+        .certificate-title {
+            color: white;
+            font-family: Verdana, sans-serif;
+            font-size: 14px;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        
+        /* Анимация для элементов галереи */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .certificate-item {
+            animation: fadeIn 0.5s ease-out forwards;
+            opacity: 0;
+        }
+        
+        /* Стили для ссылок контактов */
+        .contact-link a {
+            color: black;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.2);
+            transition: all 0.3s;
+        }
+        
+        .contact-link a:hover {
+            background-color: rgba(255, 255, 255, 0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <!-- Модальное окно для полноэкранного просмотра - ТОЛЬКО ИЗОБРАЖЕНИЕ -->
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <!--Header(start)-->
+    <table id="header" border="0" width="100%" cellpadding="0" cellspacing="0" bgcolor="#008080">
+        <tr>
+            <td>
+                <table border="0" cellpadding="15" cellspacing="0" width="90%" align="center">
+                    <tr>
+                        <td>
+                            <font face="Comic Sans MS" size="6">
+                                <b>Мое портфолио</b>
+                            </font>
+                        </td>
+                        <td width="15%" class="mobile-hidden"></td>
+                        <td>
+                            <a href="index.html" style="text-decoration:none">
+                                <font face="Comic Sans MS" size="5" color="black">
+                                    Дома
+                                </font>
+                            </a>
+                        </td>
+                        <td class="mobile-hidden"></td>
+                        <td class="mobile-hidden"></td>
+                        <td>
+                            <a href="projects.html" style="text-decoration:none">
+                                <font face="Comic Sans MS" size="5" color="black">
+                                    Грамоты
+                                </font>
+                            </a>
+                        </td>
+                        <td class="mobile-hidden"></td>
+                        <td>
+                            <a href="achievements.html" style="text-decoration:none">
+                                <font face="Comic Sans MS" size="5" color="black">
+                                    Достижения
+                                </font>
+                            </a>
+                        </td>
+                        <td class="mobile-hidden"></td>
+                        <td>
+                            <a href="contact.html" style="text-decoration:none">
+                                <font face="Comic Sans MS" size="5" color="black">
+                                    Контакты
+                                </font>
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <!--Header(end)-->
+
+    <!--Certificates Title(start)-->
+    <table id="certificates-title" border="0" width="100%" cellpadding="0" cellspacing="0" bgcolor="black">
+        <tr>
+            <td>
+                <table border="0" cellpadding="15" cellspacing="0" width="80%" align="center">
+                    <tr>
+                        <td height="150" align="center" valign="middle">
+                            <font face="Verdana" size="7" color="#008080">
+                                Мои грамоты и награды
+                            </font>
+                            <br><br>
+                            <font face="Verdana" size="5" color="#4CAF50">
+                                Достижения в учебе и профессиональной деятельности
+                            </font>
+                            <br><br>
+                            <font face="Verdana" size="4" color="white">
+                                Нажмите на изображение для просмотра в полноэкранном режиме
+                            </font>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+</table>
+<!--Certificates Title(end)-->
+
+<!--Certificates Grid(start)-->
+<table id="certificates-grid" border="0" width="100%" cellpadding="0" cellspacing="0" bgcolor="black">
+    <tr>
+        <td>
+            <table border="0" cellpadding="15" cellspacing="0" width="95%" align="center" class="certificates-table">
+                <!-- Первая строка грамот -->
+                <tr>
+                    <td width="33%">
+                        <div class="certificate-item" onclick="openModal('imges/5.jpg')" style="animation-delay: 0.1s">
+                            <img src="imges/5.jpg" alt="Курс Программирование на Python" />
+                            <p>
+                                <font face="Verdana" size="4" color="white">
+                                    <b>Курс "Программирование на Python"</b>
+                                </font>
+                            </p>
+                        </div>
+                    </td>
+                    
+                    <td width="33%">
+                        <div class="certificate-item" onclick="openModal('imges/7.jpg')" style="animation-delay: 0.2s">
+                            <img src="imges/7.jpg" alt="Курс Поколение Python для начинающих" />
+                            <p>
+                                <font face="Verdana" size="4" color="white">
+                                    <b>"Поколение Python" Курс для начинающих</b>
+                                </font>
+                            </p>
+                        </div>
+                    </td>
+                    
+                    <td width="33%">
+                        <div class="certificate-item" onclick="openModal('imges/10.jpg')" style="animation-delay: 0.3s">
+                            <img src="imges/10.jpg" alt="IT-диктант Всероссийская образовательная акция" />
+                            <p>
+                                <font face="Verdana" size="4" color="white">
+                                    <b>"IT-диктант"</b><br>
+                                    Всероссийская образовательная акция, 2025 год
+                                </font>
+                            </p>
+                        </div>
+                    </td>
+                </tr>
+                
+                <!-- Вторая строка грамот -->
+                <tr>
+                    <td width="33%">
+                        <div class="certificate-item" onclick="openModal('imges/4.jpg')" style="animation-delay: 0.4s">
+                            <img src="imges/4.jpg" alt="Участие в уроке Технологии тестирования" />
+                            <p>
+                                <font face="Verdana" size="4" color="white">
+                                    <b>Участие в уроке "Технологии тестирования"</b><br>
+                                    Всероссийская образовательная акция "Урок цифры", 2023 год
+                                </font>
+                            </p>
+                        </div>
+                    </td>
+                    
+                    <td width="33%">
+                        <div class="certificate-item" onclick="openModal('imges/1.jpg')" style="animation-delay: 0.5s">
+                            <img src="imges/1.jpg" alt="Благодарственное письмо" />
+                            <div class="certificate-title">Благодарственное письмо</div>
+                        </div>
+                    </td>
+                    
+                    <td width="33%">
+                        <div class="certificate-item" onclick="openModal('imges/2.jpg')" style="animation-delay: 0.6s">
+                            <img src="imges/2.jpg" alt="Благодарственное письмо" />
+                            <div class="certificate-title">Благодарственное письмо</div>
+                        </div>
+                    </td>
+                </tr>
+                
+                <!-- Третья строка грамот -->
+                <tr>
+                    <td width="33%">
+                        <div class="certificate-item" onclick="openModal('imges/3.jpg')" style="animation-delay: 0.7s">
+                            <img src="imges/3.jpg" alt="Благодарственное письмо" />
+                            <div class="certificate-title">Благодарственное письмо</div>
+                        </div>
+                    </td>
+                    
+                    <td width="33%">
+                        <div class="certificate-item" onclick="openModal('imges/8.jpg')" style="animation-delay: 0.8s">
+                            <img src="imges/8.jpg" alt="Благодарственное письмо" />
+                            <div class="certificate-title">Благодарственное письмо</div>
+                        </div>
+                    </td>
+                    
+                    <td width="33%">
+                        <div class="certificate-item" onclick="openModal('imges/9.jpg')" style="animation-delay: 0.9s">
+                            <img src="imges/9.jpg" alt="Сертификат по SQL" />
+                            <p>
+                                <font face="Verdana" size="4" color="white">
+                                    <b>Сертификат по SQL</b><br>
+                                    Успешное завершение курса, 2024 год
+                                </font>
+                            </p>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+<!--Certificates Grid(end)-->
+
+<!--Certificates Footer(start)-->
+<table id="certificates-footer" border="0" width="100%" cellpadding="0" cellspacing="0" bgcolor="black">
+    <tr>
+        <td>
+            <table border="0" cellpadding="15" cellspacing="0" width="80%" align="center">
+                <tr>
+                    <td align="center" valign="middle">
+                        <hr color="#008080" />
+                        <font face="Verdana" size="5" color="white">
+                            <b>Важность достижений</b>
+                        </font>
+                        <br><br>
+                        <font face="Verdana" size="4" color="white">
+                            Каждая грамота и сертификат - это не просто бумага, а результат упорного труда и стремление к постоянному развитию. 
+                            Эти достижения подтверждают мои профессиональные компетенции и готовность 
+                            к решению сложных задач в области разработки баз данных.
+                        </font>
+                        <br><br>
+                        <font face="Verdana" size="4" color="#4CAF50">
+                            <i>"Успех - это не случайность, это результат подготовки, труда и извлечения уроков из неудач"</i>
+                        </font>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+<!--Certificates Footer(end)-->
+
+<script>
+    // Получаем модальное окно
+    const modal = document.getElementById("imageModal");
+    const modalImg = document.getElementById("modalImage");
+    const closeBtn = document.getElementsByClassName("close")[0];
+    
+    // Функция открытия модального окна - ТОЛЬКО ИЗОБРАЖЕНИЕ
+    function openModal(imageSrc) {
+        modal.style.display = "flex";
+        modalImg.src = imageSrc;
+        
+        // Предотвращаем прокрутку страницы под модальным окном
+        document.body.style.overflow = "hidden";
+    }
+    
+    // Закрытие по клику на крестик
+    closeBtn.onclick = function() {
+        modal.style.display = "none";
+        document.body.style.overflow = "auto";
+    }
+    
+    // Закрытие по клику вне изображения
+    modal.onclick = function(event) {
+        if (event.target === modal) {
+            modal.style.display = "none";
+            document.body.style.overflow = "auto";
+        }
+    }
+    
+    // Закрытие по нажатию клавиши Escape
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape' && modal.style.display === "flex") {
+            modal.style.display = "none";
+            document.body.style.overflow = "auto";
+        }
+    });
+    
+    // Закрытие по нажатию на само изображение (опционально)
+    modalImg.onclick = function(event) {
+        event.stopPropagation();
+        modal.style.display = "none";
+        document.body.style.overflow = "auto";
+    }
+    
+    // Анимация для элементов галереи при загрузке
+    document.addEventListener('DOMContentLoaded', function() {
+        const certificateItems = document.querySelectorAll('.certificate-item');
+        certificateItems.forEach((item, index) => {
+            item.style.animationDelay = `${index * 0.1}s`;
+        });
+    });
+</script>
+    <!--Footer(start)-->
+    <table id="footer" border="0" width="100%" cellpadding="0" cellspacing="0" bgcolor="#008080">
+        <tr>
+            <td>
+                <table border="0" cellpadding="15" cellspacing="0" width="90%" align="center">
+                    <tr>
+                        <td width="33%" align="center" valign="top">
+                            <font face="Verdana" size="4" color="black">
+                                <b>Телефон:</b><br>
+                                <div class="contact-link">
+                                    <a href="tel:+79146128011">+7 (914) 612-80-11</a>
+                                </div>
+                            </font>
+                        </td>
+
+                        <td width="33%" align="center" valign="top">
+                            <font face="Verdana" size="4" color="black">
+                                <b>ВКонтакте:</b><br>
+                                <div class="contact-link">
+                                    <a href="https://vk.com/danilkkaaaa" target="_blank" rel="noopener noreferrer">vk.com/danilkkaaaa</a>
+                                </div>
+                            </font>
+                        </td>
+
+                        <td width="33%" align="center" valign="top">
+                            <font face="Verdana" size="4" color="black">
+                                <b>Email:</b><br>
+                                <div class="contact-link">
+                                    <a href="mailto:Leonardov2006@yandex.ru">Leonardov2006@yandex.ru</a>
+                                </div>
+                            </font>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
