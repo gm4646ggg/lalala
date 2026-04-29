@@ -2,656 +2,115 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Мои достижения — Портфолио</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Портфолио – Грамоты и диплом</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Verdana', 'Segoe UI', sans-serif;
-            background-color: #000;
-            color: #f0f0f0;
-            line-height: 1.5;
-        }
-
-        .section-table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        .container-table {
-            width: 90%;
-            margin: 0 auto;
-            border-collapse: collapse;
-        }
-
-        .header-bg {
-            background-color: #008080;
-        }
-
-        .nav-link {
-            text-decoration: none;
-            font-family: 'Comic Sans MS', cursive, sans-serif;
-            font-size: 18px;
-            color: black;
-            font-weight: bold;
-            transition: 0.2s;
-            display: inline-block;
-            padding: 4px 10px;
-            border-radius: 20px;
-        }
-
-        .nav-link:hover {
-            background-color: rgba(0,0,0,0.2);
-            transform: scale(1.02);
-        }
-
-        .active-page {
-            background-color: #ffd966;
-            box-shadow: 0 0 5px #ffc107;
-            border-radius: 30px;
-            padding: 4px 14px;
-        }
-
-        .section-title {
-            background-color: black;
-            padding: 40px 20px 20px;
-            text-align: center;
-        }
-
-        .main-title {
-            font-size: 2.2rem;
-            color: #008080;
-            font-weight: bold;
-            letter-spacing: 1px;
-        }
-
-        .subhead {
-            font-size: 1.2rem;
-            color: #4CAF50;
-            margin-top: 8px;
-        }
-
-        .gallery-grid {
-            background-color: black;
-            padding: 30px 20px;
-        }
-
-        .gallery-wrapper {
-            max-width: 1300px;
-            margin: 0 auto;
-        }
-
-        .gallery-title {
-            text-align: center;
-            font-size: 1.8rem;
-            color: #008080;
-            margin-bottom: 30px;
-            font-weight: bold;
-            border-bottom: 2px solid #008080;
-            display: inline-block;
-            width: auto;
-            padding-bottom: 8px;
-        }
-
-        .certificates-table {
-            width: 100%;
-            margin: 0 auto;
-            border-collapse: collapse;
-        }
-
-        .certificates-table td {
-            text-align: center;
-            vertical-align: top;
-            padding: 20px 12px;
-        }
-
-        .certificate-item {
-            background: rgba(255,255,255,0.03);
-            border-radius: 20px;
-            padding: 15px 10px;
-            transition: all 0.25s ease;
-            cursor: pointer;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            backdrop-filter: blur(2px);
-        }
-
-        .certificate-item:hover {
-            background: rgba(0,128,128,0.15);
-            transform: translateY(-6px);
-        }
-
-        .certificate-item img {
-            width: 100%;
-            max-width: 280px;
-            height: 200px;
-            object-fit: cover;
-            border: 3px solid #008080;
-            border-radius: 12px;
-            transition: 0.2s;
-            background-color: #1a1a1a;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-        }
-
-        .certificate-item img:hover {
-            border-color: #4CAF50;
-        }
-
-        .fig-caption {
-            margin-top: 14px;
-            font-size: 0.9rem;
-            font-weight: bold;
-            color: #e0e0e0;
-            background: #1a1f1f;
-            padding: 6px 12px;
-            border-radius: 40px;
-            display: inline-block;
-        }
-
-        .fig-desc {
-            font-size: 0.75rem;
-            color: #9bc4c4;
-            margin-top: 6px;
-            text-align: center;
-            max-width: 260px;
-        }
-
-        .diplom-block {
-            background: #0a0f0f;
-            border-top: 3px solid #008080;
-            border-bottom: 3px solid #008080;
-            margin-top: 20px;
-            padding: 40px 20px;
-        }
-
-        .diplom-inner {
-            max-width: 1300px;
-            margin: 0 auto;
-        }
-
-        .diplom-header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .diplom-header h2 {
-            font-size: 2rem;
-            color: #008080;
-        }
-
-        .diplom-header p {
-            font-size: 1rem;
-            color: #ccc;
-            max-width: 800px;
-            margin: 10px auto;
-        }
-
-        .info-cards {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
-            justify-content: center;
-            margin-bottom: 50px;
-        }
-
-        .info-card {
-            background: #111;
-            border-radius: 24px;
-            padding: 20px 25px;
-            width: 100%;
-            max-width: 550px;
-            box-shadow: 0 8px 20px rgba(0,128,128,0.2);
-        }
-
-        .info-card h3 {
-            color: #008080;
-            margin-bottom: 15px;
-            font-size: 1.5rem;
-            border-left: 4px solid #4CAF50;
-            padding-left: 12px;
-        }
-
-        .info-card p, .info-card li {
-            color: #ccc;
-            font-size: 0.95rem;
-        }
-
-        .tech-badge {
-            display: inline-block;
-            background: #1e2a2a;
-            color: #b0e0e0;
-            border-radius: 40px;
-            padding: 6px 14px;
-            margin: 5px 8px 5px 0;
-            font-size: 0.85rem;
-            font-weight: bold;
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 2000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.98);
-            justify-content: center;
-            align-items: center;
-        }
-
-        .modal-content {
-            max-width: 90vw;
-            max-height: 90vh;
-            object-fit: contain;
-            border-radius: 12px;
-            box-shadow: 0 0 25px #008080;
-            animation: fadeZoom 0.25s ease;
-        }
-
-        @keyframes fadeZoom {
-            from { transform: scale(0.95); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
-        }
-
-        .close-modal {
-            position: absolute;
-            top: 25px;
-            right: 35px;
-            color: white;
-            font-size: 48px;
-            font-weight: bold;
-            cursor: pointer;
-            background: rgba(0,0,0,0.6);
-            width: 55px;
-            height: 55px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: 0.2s;
-        }
-
-        .close-modal:hover {
-            background: #008080;
-            color: black;
-        }
-
-        .footer-bg {
-            background-color: #008080;
-            padding: 20px 0;
-        }
-
-        .contact-link a {
-            color: black;
-            text-decoration: none;
-            font-weight: bold;
-            background: rgba(255,255,255,0.25);
-            padding: 5px 12px;
-            border-radius: 30px;
-            transition: 0.2s;
-        }
-
-        .contact-link a:hover {
-            background: white;
-            color: #008080;
-        }
-
-        hr {
-            border-color: #008080;
-            margin: 20px 0;
-        }
-
+        /* единые стили, плюс адаптивные карточки */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Verdana', 'Comic Sans MS', cursive, sans-serif; background: #0a0a0a; color: #f0f0f0; line-height: 1.5; }
+        .header { background: #008080; padding: 15px 20px; }
+        .header-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
+        .logo { font-family: 'Comic Sans MS', cursive; font-size: 1.8rem; font-weight: bold; color: #000; background: rgba(255,255,255,0.2); padding: 5px 15px; border-radius: 40px; }
+        .nav-links { display: flex; gap: 15px; flex-wrap: wrap; }
+        .nav-links a { text-decoration: none; font-family: 'Comic Sans MS', cursive; font-size: 1.2rem; font-weight: bold; color: #000; padding: 6px 15px; border-radius: 30px; }
+        .nav-links a:hover { background: rgba(0,0,0,0.2); transform: translateY(-2px); }
+        .nav-links .active { background: #ffd966; box-shadow: 0 0 8px #ffc107; }
+        .section { max-width: 1200px; margin: 40px auto; padding: 20px; background: #111; border-radius: 24px; }
+        .section-title { font-size: 2rem; color: #008080; text-align: center; border-bottom: 2px solid #008080; display: inline-block; width: auto; padding-bottom: 8px; margin-bottom: 30px; }
+        .cert-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; justify-items: center; }
+        .cert-card { background: #1a1a1a; border-radius: 20px; overflow: hidden; cursor: pointer; transition: 0.2s; width: 100%; max-width: 320px; border: 2px solid #008080; }
+        .cert-card:hover { transform: translateY(-6px); border-color: #4CAF50; }
+        .cert-card img { width: 100%; height: 200px; object-fit: cover; }
+        .cert-caption { padding: 12px; text-align: center; font-weight: bold; color: #ccc; background: #0f0f0f; }
+        .info-cards { display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; margin: 40px 0; }
+        .info-card { background: #1a1a1a; border-radius: 24px; padding: 20px; max-width: 350px; flex: 1; box-shadow: 0 5px 15px rgba(0,128,128,0.2); }
+        .info-card h3 { color: #4CAF50; margin-bottom: 15px; border-left: 4px solid #008080; padding-left: 12px; }
+        .tech-badge { display: inline-block; background: #1e2a2a; color: #b0e0e0; border-radius: 40px; padding: 5px 12px; margin: 5px 5px 0 0; font-size: 0.8rem; }
+        .footer { background: #008080; padding: 30px 20px 20px; margin-top: 60px; }
+        .footer-container { max-width: 1100px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 30px; text-align: center; }
+        .footer-col { flex: 1; min-width: 180px; }
+        .footer-col b { color: #000; font-size: 1.2rem; }
+        .contact-link a { color: #000; text-decoration: none; font-weight: bold; background: rgba(255,255,255,0.25); padding: 6px 14px; border-radius: 40px; display: inline-block; transition: 0.2s; }
+        .contact-link a:hover { background: #fff; color: #008080; }
+        .copyright { text-align: center; margin-top: 25px; font-size: 0.8rem; color: #000; }
+        .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.98); justify-content: center; align-items: center; }
+        .modal-content { max-width: 90vw; max-height: 90vh; object-fit: contain; border-radius: 12px; }
+        .close-modal { position: absolute; top: 25px; right: 35px; color: white; font-size: 48px; cursor: pointer; background: rgba(0,0,0,0.6); width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+        .close-modal:hover { background: #008080; color: #000; }
         @media (max-width: 768px) {
-            .container-table td {
-                display: block;
-                text-align: center;
-                padding: 8px 0;
-            }
-            .container-table tr {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            .main-title {
-                font-size: 1.8rem;
-            }
-            .certificates-table td {
-                display: block;
-                width: 100% !important;
-            }
-            .certificate-item img {
-                max-width: 260px;
-                height: 180px;
-            }
-            .info-card {
-                margin: 0 15px;
-            }
-            .close-modal {
-                width: 45px;
-                height: 45px;
-                font-size: 38px;
-                top: 12px;
-                right: 20px;
-            }
-        }
-
-        @media (min-width: 769px) {
-            .certificates-table td {
-                width: 33.33%;
-            }
+            .header-container { flex-direction: column; }
+            .nav-links { justify-content: center; }
+            .footer-container { flex-direction: column; align-items: center; }
         }
     </style>
 </head>
 <body>
 
-<!-- ==================== ШАПКА ==================== -->
-<table class="section-table header-bg" cellpadding="0" cellspacing="0">
-    <tr>
-        <td align="center">
-            <table class="container-table" cellpadding="10" cellspacing="0">
-                <tr>
-                    <td style="font-size: 26px; font-family: 'Comic Sans MS', cursive; font-weight: bold; color: black;">
-                        🏆 Мое портфолио
-                    </td>
-                    <td width="15%"></td>
-                    <td align="center"><a href="index.html" class="nav-link">Главная</a></td>
-                    <td align="center"><a href="projects.html" class="nav-link">Грамоты</a></td>
-                    <td align="center"><a href="achievements.html" class="nav-link active-page">Достижения</a></td>
-                    <td align="center"><a href="contact.html" class="nav-link">Контакты</a></td>
-                </tr>
-            </table>
-        </td>
-    </tr>
-</table>
-
-<!-- ============= ЗАГОЛОВОК ============= -->
-<div class="section-title">
-    <div class="main-title">✨ Мои достижения</div>
-    <div class="subhead">Профессиональное развитие, сертификаты и дипломный проект</div>
-</div>
-
-<!-- ============= БЛОК 1: ГРАМОТЫ И СЕРТИФИКАТЫ ============= -->
-<div class="gallery-grid">
-    <div class="gallery-wrapper">
-        <div style="text-align: center;">
-            <div class="gallery-title">📜 Грамоты & сертификаты</div>
-        </div>
-        <table class="certificates-table" cellpadding="0" cellspacing="0">
-            <tr>
-                <td>
-                    <div class="certificate-item" onclick="openModal('imges/5.jpg')">
-                        <img src="imges/5.jpg" alt="Python курс" onerror="this.src='https://placehold.co/400x280?text=Python+Course'">
-                        <div class="fig-caption">Python-разработка</div>
-                        <div class="fig-desc">Курс «Программирование на Python», углубленный уровень</div>
-                    </div>
-                </td>
-                <td>
-                    <div class="certificate-item" onclick="openModal('imges/7.jpg')">
-                        <img src="imges/7.jpg" alt="Поколение Python" onerror="this.src='https://placehold.co/400x280?text=Python+Beginner'">
-                        <div class="fig-caption">Поколение Python</div>
-                        <div class="fig-desc">Сертификат для начинающих</div>
-                    </div>
-                </td>
-                <td>
-                    <div class="certificate-item" onclick="openModal('imges/10.jpg')">
-                        <img src="imges/10.jpg" alt="IT-диктант" onerror="this.src='https://placehold.co/400x280?text=IT+dictation'">
-                        <div class="fig-caption">IT-диктант 2025</div>
-                        <div class="fig-desc">Всероссийская образовательная акция</div>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="certificate-item" onclick="openModal('imges/4.jpg')">
-                        <img src="imges/4.jpg" alt="Урок цифры" onerror="this.src='https://placehold.co/400x280?text=Lesson+of+Digital'">
-                        <div class="fig-caption">Урок цифры</div>
-                        <div class="fig-desc">«Технологии тестирования», 2023</div>
-                    </div>
-                </td>
-                <td>
-                    <div class="certificate-item" onclick="openModal('imges/1.jpg')">
-                        <img src="imges/1.jpg" alt="Благодарность 1" onerror="this.src='https://placehold.co/400x280?text=Thanks+letter'">
-                        <div class="fig-caption">Благодарность</div>
-                        <div class="fig-desc">За олимпиады по информатике</div>
-                    </div>
-                </td>
-                <td>
-                    <div class="certificate-item" onclick="openModal('imges/2.jpg')">
-                        <img src="imges/2.jpg" alt="Благодарность 2" onerror="this.src='https://placehold.co/400x280?text=Thanks+letter+2'">
-                        <div class="fig-caption">Благодарность</div>
-                        <div class="fig-desc">Вклад в IT-сообщество школы</div>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="certificate-item" onclick="openModal('imges/3.jpg')">
-                        <img src="imges/3.jpg" alt="Почетная грамота" onerror="this.src='https://placehold.co/400x280?text=Thanks+letter+3'">
-                        <div class="fig-caption">Почетная грамота</div>
-                        <div class="fig-desc">За отличную учебу и проекты</div>
-                    </div>
-                </td>
-                <td>
-                    <div class="certificate-item" onclick="openModal('imges/8.jpg')">
-                        <img src="imges/8.jpg" alt="Наставничество" onerror="this.src='https://placehold.co/400x280?text=Mentoring'">
-                        <div class="fig-caption">Наставничество</div>
-                        <div class="fig-desc">Помощь младшим в алгоритмах</div>
-                    </div>
-                </td>
-                <td>
-                    <div class="certificate-item" onclick="openModal('imges/9.jpg')">
-                        <img src="imges/9.jpg" alt="SQL сертификат" onerror="this.src='https://placehold.co/400x280?text=SQL+Certificate'">
-                        <div class="fig-caption">Продвинутый SQL</div>
-                        <div class="fig-desc">Курс по базам данных, 2024</div>
-                    </div>
-                </td>
-            </tr>
-        </table>
-        <div style="text-align: center; margin-top: 10px; font-size: 0.8rem; color: #aaa;">* нажмите на изображение для увеличения</div>
-    </div>
-</div>
-
-<!-- ============= БЛОК 2: ДИПЛОМНЫЙ ПРОЕКТ (7 рисунков из папки images) ============= -->
-<div class="diplom-block">
-    <div class="diplom-inner">
-        <div class="diplom-header">
-            <h2>🎓 Дипломный проект: «Автоматизация школьной библиотеки»</h2>
-            <p>Информационная система для учёта книг, читателей, выдачи и возврата.</p>
-        </div>
-
-        <!-- карточки с описанием -->
-        <div class="info-cards">
-            <div class="info-card">
-                <h3>📌 Задачи системы</h3>
-                <ul>
-                    <li>✔ Управление читателями (поиск, добавление, класс, телефон)</li>
-                    <li>✔ Каталог книг с фильтрацией по жанру, автору, статусу</li>
-                    <li>✔ Оформление выдачи и возврата с контролем сроков</li>
-                    <li>✔ Формирование списка должников и аналитика популярных книг</li>
-                    <li>✔ Авторизация библиотекаря</li>
-                </ul>
-            </div>
-            <div class="info-card">
-                <h3>⚙ Технологический стек</h3>
-                <div>
-                    <span class="tech-badge">Python / Django</span>
-                    <span class="tech-badge">PostgreSQL</span>
-                    <span class="tech-badge">HTML5/CSS3</span>
-                    <span class="tech-badge">JavaScript (ES6)</span>
-                    <span class="tech-badge">Bootstrap 5</span>
-                </div>
-                <p style="margin-top: 20px;">Трёхуровневая архитектура, адаптивный интерфейс, триггеры для просрочек.</p>
-            </div>
-            <div class="info-card">
-                <h3>📊 Результаты внедрения</h3>
-                <ul>
-                    <li>📈 Сокращение времени на поиск книг на 60%</li>
-                    <li>📋 Автоматические отчёты о должниках</li>
-                    <li>🌟 Топ самых популярных книг</li>
-                    <li>🖥 Удобный интерфейс для библиотекаря</li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- ГАЛЕРЕЯ 7 ИЗОБРАЖЕНИЙ: пути прописаны НОРМАЛЬНО images/Рисунок1.png ... Рисунок7.png -->
-        <div class="gallery-title" style="margin: 20px auto 30px; display: table;">📸 Интерфейс системы (7 ключевых экранов)</div>
-        <table class="certificates-table" cellpadding="0" cellspacing="0">
-            <tr>
-                <td>
-                    <div class="certificate-item" onclick="openModal('images/Рисунок1.png')">
-                        <img src="images/Рисунок1.png" alt="Авторизация" onerror="this.src='https://placehold.co/400x280?text=Рисунок1+Авторизация'">
-                        <div class="fig-caption">Рис. 1 — Авторизация</div>
-                        <div class="fig-desc">Страница входа для сотрудников</div>
-                    </div>
-                </td>
-                <td>
-                    <div class="certificate-item" onclick="openModal('images/Рисунок2.png')">
-                        <img src="images/Рисунок2.png" alt="Журнал выдач" onerror="this.src='https://placehold.co/400x280?text=Рисунок2+Выдачи'">
-                        <div class="fig-caption">Рис. 2 — Журнал выдач</div>
-                        <div class="fig-desc">Активные выдачи с датами</div>
-                    </div>
-                </td>
-                <td>
-                    <div class="certificate-item" onclick="openModal('images/Рисунок3.png')">
-                        <img src="images/Рисунок3.png" alt="Управление читателями" onerror="this.src='https://placehold.co/400x280?text=Рисунок3+Читатели'">
-                        <div class="fig-caption">Рис. 3 — Читатели</div>
-                        <div class="fig-desc">Поиск, класс, телефон, дата рождения</div>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="certificate-item" onclick="openModal('images/Рисунок4.png')">
-                        <img src="images/Рисунок4.png" alt="Каталог книг" onerror="this.src='https://placehold.co/400x280?text=Рисунок4+Книги'">
-                        <div class="fig-caption">Рис. 4 — Каталог книг</div>
-                        <div class="fig-desc">Название, автор, жанр, статус</div>
-                    </div>
-                </td>
-                <td>
-                    <div class="certificate-item" onclick="openModal('images/Рисунок5.png')">
-                        <img src="images/Рисунок5.png" alt="Выдача и возврат" onerror="this.src='https://placehold.co/400x280?text=Рисунок5+Выдача'">
-                        <div class="fig-caption">Рис. 5 — Выдача/возврат</div>
-                        <div class="fig-desc">Выбор читателя и книги</div>
-                    </div>
-                </td>
-                <td>
-                    <div class="certificate-item" onclick="openModal('images/Рисунок6.png')">
-                        <img src="images/Рисунок6.png" alt="Список должников" onerror="this.src='https://placehold.co/400x280?text=Рисунок6+Должники'">
-                        <div class="fig-caption">Рис. 6 — Должники</div>
-                        <div class="fig-desc">Автоматический отчёт с телефонами</div>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="certificate-item" onclick="openModal('images/Рисунок7.png')">
-                        <img src="images/Рисунок7.png" alt="Популярные книги" onerror="this.src='https://placehold.co/400x280?text=Рисунок7+Популярные'">
-                        <div class="fig-caption">Рис. 7 — Топ книг</div>
-                        <div class="fig-desc">Статистика выдач</div>
-                    </div>
-                </td>
-                <td colspan="2"></td>
-            </tr>
-        </table>
-        <div style="text-align: center; margin-top: 15px;">
-            <span style="background: #1a2a2a; padding: 6px 16px; border-radius: 40px; font-size: 0.8rem;">💡 Все изображения кликабельны — открываются в полном размере</span>
-        </div>
-        <div style="text-align: center; margin-top: 35px;">
-            <a href="#" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;" style="color:#008080; font-weight: bold;">▲ Вернуться к началу</a>
+<div class="header">
+    <div class="header-container">
+        <div class="logo">🏆 Мое портфолио</div>
+        <div class="nav-links">
+            <a href="index.html">Главная</a>
+            <a href="projects.html" class="active">Грамоты</a>
+            <a href="achievements.html">Достижения</a>
+            <a href="contact.html">Контакты</a>
         </div>
     </div>
 </div>
 
-<!-- итоговая подпись -->
-<table class="section-table" bgcolor="black" cellpadding="0" cellspacing="0">
-    <tr>
-        <td align="center" style="padding: 30px 20px;">
-            <hr color="#008080" width="60%">
-            <font face="Verdana" size="4" color="#4CAF50"><b>🏅 Защита дипломной работы — оценка «отлично»</b></font><br><br>
-            <font face="Verdana" size="3" color="#ddd">
-                Система рекомендована к внедрению в школьных библиотеках. Планируется интеграция с электронным дневником.
-            </font>
-            <br><br>
-            <font face="Verdana" size="2" color="#888">2025 · Специальность «Информационные системы и технологии»</font>
-        </td>
-    </tr>
-</table>
-
-<!-- ==================== ФУТЕР ==================== -->
-<table class="section-table footer-bg" cellpadding="0" cellspacing="0">
-    <tr>
-        <td align="center">
-            <table class="container-table" cellpadding="15" cellspacing="0">
-                <tr>
-                    <td width="33%" align="center" valign="top">
-                        <font face="Verdana" size="4" color="black"><b>📞 Телефон:</b></font><br>
-                        <div class="contact-link"><a href="tel:+79146128011">+7 (914) 612-80-11</a></div>
-                    </td>
-                    <td width="33%" align="center" valign="top">
-                        <font face="Verdana" size="4" color="black"><b>💬 ВКонтакте:</b></font><br>
-                        <div class="contact-link"><a href="https://vk.com/danilkkaaaa" target="_blank" rel="noopener noreferrer">vk.com/danilkkaaaa</a></div>
-                    </td>
-                    <td width="33%" align="center" valign="top">
-                        <font face="Verdana" size="4" color="black"><b>✉ Email:</b></font><br>
-                        <div class="contact-link"><a href="mailto:Leonardov2006@yandex.ru">Leonardov2006@yandex.ru</a></div>
-                    </td>
-                </tr>
-                <tr><td colspan="3" align="center" style="padding-top: 10px; font-size:12px;">© 2025 Портфолио | Дипломный проект в разделе достижений</td></tr>
-            </table>
-        </td>
-    </tr>
-</table>
-
-<!-- ==================== МОДАЛЬНОЕ ОКНО ==================== -->
-<div id="imageModal" class="modal">
-    <span class="close-modal" id="closeModalBtn">&times;</span>
-    <img class="modal-content" id="modalImage" alt="Полноэкранный просмотр">
+<div class="section">
+    <div style="text-align: center;"><span class="section-title">📜 Грамоты и сертификаты</span></div>
+    <div class="cert-grid">
+        <div class="cert-card" onclick="openModal('images/5.jpg')"><img src="images/5.jpg" onerror="this.src='https://placehold.co/400x280?text=Python'"><div class="cert-caption">Python-разработка (углубленный курс)</div></div>
+        <div class="cert-card" onclick="openModal('images/7.jpg')"><img src="images/7.jpg" onerror="this.src='https://placehold.co/400x280?text=Python+Beginner'"><div class="cert-caption">Поколение Python – для начинающих</div></div>
+        <div class="cert-card" onclick="openModal('images/10.jpg')"><img src="images/10.jpg" onerror="this.src='https://placehold.co/400x280?text=IT+dictation'"><div class="cert-caption">IT-диктант 2025</div></div>
+        <div class="cert-card" onclick="openModal('images/4.jpg')"><img src="images/4.jpg" onerror="this.src='https://placehold.co/400x280?text=Digital+Lesson'"><div class="cert-caption">Урок цифры – тестирование</div></div>
+        <div class="cert-card" onclick="openModal('images/1.jpg')"><img src="images/1.jpg" onerror="this.src='https://placehold.co/400x280?text=Thanks'"><div class="cert-caption">Благодарность за олимпиады</div></div>
+        <div class="cert-card" onclick="openModal('images/2.jpg')"><img src="images/2.jpg" onerror="this.src='https://placehold.co/400x280?text=Thanks+2'"><div class="cert-caption">Вклад в IT-сообщество</div></div>
+        <div class="cert-card" onclick="openModal('images/3.jpg')"><img src="images/3.jpg" onerror="this.src='https://placehold.co/400x280?text=Honor'"><div class="cert-caption">Почетная грамота за учебу</div></div>
+        <div class="cert-card" onclick="openModal('images/8.jpg')"><img src="images/8.jpg" onerror="this.src='https://placehold.co/400x280?text=Mentoring'"><div class="cert-caption">Наставничество (алгоритмы)</div></div>
+        <div class="cert-card" onclick="openModal('images/9.jpg')"><img src="images/9.jpg" onerror="this.src='https://placehold.co/400x280?text=SQL'"><div class="cert-caption">Продвинутый SQL, 2024</div></div>
+    </div>
 </div>
 
+<div class="section">
+    <div class="section-title">🎓 Дипломный проект: «Автоматизация школьной библиотеки»</div>
+    <div class="info-cards">
+        <div class="info-card"><h3>📌 Задачи</h3><ul><li>Учёт читателей и книг</li><li>Выдача/возврат с контролем сроков</li><li>Должники и аналитика популярных книг</li><li>Авторизация библиотекаря</li></ul></div>
+        <div class="info-card"><h3>⚙ Технологии</h3><div><span class="tech-badge">Python/Django</span> <span class="tech-badge">PostgreSQL</span> <span class="tech-badge">HTML5/CSS3</span> <span class="tech-badge">JavaScript</span></div><p style="margin-top: 15px;">Адаптивный интерфейс, триггеры просрочек</p></div>
+        <div class="info-card"><h3>📊 Результаты</h3><ul><li>Сокращение времени поиска на 60%</li><li>Автоотчёты о должниках</li><li>Топ популярных книг</li></ul></div>
+    </div>
+
+    <div style="text-align: center; font-size: 1.5rem; color: #008080; margin: 40px 0 20px;">📸 Скриншоты системы</div>
+    <div class="cert-grid">
+        <div class="cert-card" onclick="openModal('images/Рисунок1.png')"><img src="images/Рисунок1.png" onerror="this.src='https://placehold.co/400x280?text=Auth'"><div class="cert-caption">Авторизация</div></div>
+        <div class="cert-card" onclick="openModal('images/Рисунок2.png')"><img src="images/Рисунок2.png" onerror="this.src='https://placehold.co/400x280?text=Journals'"><div class="cert-caption">Журнал выдач</div></div>
+        <div class="cert-card" onclick="openModal('images/Рисунок3.png')"><img src="images/Рисунок3.png" onerror="this.src='https://placehold.co/400x280?text=Readers'"><div class="cert-caption">Читатели</div></div>
+        <div class="cert-card" onclick="openModal('images/Рисунок4.png')"><img src="images/Рисунок4.png" onerror="this.src='https://placehold.co/400x280?text=Books'"><div class="cert-caption">Каталог книг</div></div>
+        <div class="cert-card" onclick="openModal('images/Рисунок5.png')"><img src="images/Рисунок5.png" onerror="this.src='https://placehold.co/400x280?text=Checkout'"><div class="cert-caption">Выдача/возврат</div></div>
+        <div class="cert-card" onclick="openModal('images/Рисунок6.png')"><img src="images/Рисунок6.png" onerror="this.src='https://placehold.co/400x280?text=Debtors'"><div class="cert-caption">Список должников</div></div>
+        <div class="cert-card" onclick="openModal('images/Рисунок7.png')"><img src="images/Рисунок7.png" onerror="this.src='https://placehold.co/400x280?text=TopBooks'"><div class="cert-caption">Топ книг</div></div>
+    </div>
+    <div style="text-align: center; margin-top: 30px; background: #0f2a2a; padding: 15px; border-radius: 50px;">🏅 Защита дипломной работы – оценка «отлично». Рекомендовано к внедрению.</div>
+</div>
+
+<div class="footer">
+    <div class="footer-container">
+        <div class="footer-col"><b>📞 Телефон</b><br><div class="contact-link"><a href="tel:+79146128011">+7 (914) 612-80-11</a></div></div>
+        <div class="footer-col"><b>💬 ВКонтакте</b><br><div class="contact-link"><a href="https://vk.com/danilkkaaaa">vk.com/danilkkaaaa</a></div></div>
+        <div class="footer-col"><b>✉ Email</b><br><div class="contact-link"><a href="mailto:Leonardov2006@yandex.ru">Leonardov2006@yandex.ru</a></div></div>
+    </div>
+    <div class="copyright">© 2025 Портфолио Даниила | Дипломный проект</div>
+</div>
+
+<div id="modal" class="modal"><span class="close-modal" onclick="closeModal()">&times;</span><img class="modal-content" id="modalImg"></div>
 <script>
-    const modal = document.getElementById('imageModal');
-    const modalImg = document.getElementById('modalImage');
-    const closeBtn = document.getElementById('closeModalBtn');
-    
-    window.openModal = function(imageSrc) {
-        if (!imageSrc) return;
-        modal.style.display = 'flex';
-        modalImg.src = imageSrc;
-        document.body.style.overflow = 'hidden';
-    };
-    
-    function closeModal() {
-        modal.style.display = 'none';
-        document.body.style.overflow = 'auto';
-    }
-    
-    closeBtn.onclick = closeModal;
-    modal.addEventListener('click', function(e) {
-        if (e.target === modal) closeModal();
-    });
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && modal.style.display === 'flex') closeModal();
-    });
-    
-    // плавное появление элементов
-    const items = document.querySelectorAll('.certificate-item');
-    items.forEach((item, idx) => {
-        item.style.opacity = '0';
-        item.style.transform = 'translateY(8px)';
-        item.style.transition = 'opacity 0.4s ease, transform 0.3s ease';
-        setTimeout(() => {
-            item.style.opacity = '1';
-            item.style.transform = 'translateY(0)';
-        }, idx * 60);
-    });
+    const modal = document.getElementById('modal');
+    const modalImg = document.getElementById('modalImg');
+    window.openModal = (src) => { modal.style.display = 'flex'; modalImg.src = src; document.body.style.overflow = 'hidden'; };
+    function closeModal() { modal.style.display = 'none'; document.body.style.overflow = 'auto'; }
+    modal.onclick = (e) => { if(e.target === modal) closeModal(); };
+    document.addEventListener('keydown', (e) => { if(e.key === 'Escape' && modal.style.display === 'flex') closeModal(); });
 </script>
 </body>
 </html>
