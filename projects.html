@@ -1,28 +1,241 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Мое портфолио - Грамоты</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Дипломный проект - Автоматизация школьной библиотеки</title>
     <style>
-        /* Базовые стили для мобильной адаптации */
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
-        
+
         body {
-            font-family: 'Verdana', 'Comic Sans MS', sans-serif;
-            line-height: 1.6;
+            font-family: 'Verdana', 'Segoe UI', sans-serif;
             background-color: #000;
+            color: #f0f0f0;
+            line-height: 1.5;
         }
-        
-        /* Стили для модального окна с изображением - ТОЛЬКО ИЗОБРАЖЕНИЕ */
+
+        /* общие стили для таблиц-контейнеров (сохранение структуры как в оригинале) */
+        .section-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .container-table {
+            width: 90%;
+            margin: 0 auto;
+            border-collapse: collapse;
+        }
+
+        /* шапка */
+        .header-bg {
+            background-color: #008080;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            font-size: 18px;
+            color: black;
+            font-weight: bold;
+            transition: 0.2s;
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 20px;
+        }
+
+        .nav-link:hover {
+            background-color: rgba(0,0,0,0.2);
+            transform: scale(1.02);
+        }
+
+        .active-page {
+            background-color: #ffd966;
+            box-shadow: 0 0 5px #ffc107;
+            border-radius: 30px;
+            padding: 4px 14px;
+        }
+
+        /* заголовок раздела */
+        .title-section {
+            background-color: black;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .title-main {
+            font-size: 2.2rem;
+            color: #008080;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            color: #4CAF50;
+            margin-top: 10px;
+        }
+
+        .desc-text {
+            font-size: 1rem;
+            max-width: 900px;
+            margin: 20px auto 0;
+            color: #ddd;
+            padding: 0 15px;
+        }
+
+        /* описание дипломной работы */
+        .diplom-description {
+            background: #0a0f0f;
+            border-top: 2px solid #008080;
+            border-bottom: 2px solid #008080;
+            padding: 30px 20px;
+        }
+
+        .diplom-description-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+
+        .info-card {
+            background: #111;
+            border-radius: 24px;
+            padding: 20px 25px;
+            width: 100%;
+            max-width: 550px;
+            box-shadow: 0 8px 20px rgba(0,128,128,0.2);
+            transition: all 0.2s;
+        }
+
+        .info-card h3 {
+            color: #008080;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+            border-left: 4px solid #4CAF50;
+            padding-left: 12px;
+        }
+
+        .info-card p, .info-card li {
+            color: #ccc;
+            font-size: 0.96rem;
+        }
+
+        .info-card ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        .info-card li {
+            margin: 8px 0;
+        }
+
+        .tech-badge {
+            display: inline-block;
+            background: #1e2a2a;
+            color: #b0e0e0;
+            border-radius: 40px;
+            padding: 6px 14px;
+            margin: 5px 8px 5px 0;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        /* сетка изображений (аналогично грамотам, но с подписями) */
+        .gallery-grid {
+            background-color: black;
+            padding: 40px 20px;
+        }
+
+        .gallery-wrapper {
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .gallery-title {
+            text-align: center;
+            font-size: 1.8rem;
+            color: #008080;
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
+
+        .certificates-table {
+            width: 100%;
+            margin: 0 auto;
+            border-collapse: collapse;
+        }
+
+        .certificates-table td {
+            text-align: center;
+            vertical-align: top;
+            padding: 20px 12px;
+        }
+
+        .certificate-item {
+            background: rgba(255,255,255,0.03);
+            border-radius: 20px;
+            padding: 15px 10px;
+            transition: all 0.25s ease;
+            cursor: pointer;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            backdrop-filter: blur(2px);
+        }
+
+        .certificate-item:hover {
+            background: rgba(0,128,128,0.15);
+            transform: translateY(-6px);
+        }
+
+        .certificate-item img {
+            width: 100%;
+            max-width: 280px;
+            height: 200px;
+            object-fit: cover;
+            border: 3px solid #008080;
+            border-radius: 12px;
+            transition: 0.2s;
+            background-color: #1a1a1a;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+        }
+
+        .certificate-item img:hover {
+            border-color: #4CAF50;
+        }
+
+        .fig-caption {
+            margin-top: 14px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: #e0e0e0;
+            background: #1a1f1f;
+            padding: 6px 12px;
+            border-radius: 40px;
+            display: inline-block;
+        }
+
+        .fig-desc {
+            font-size: 0.8rem;
+            color: #9bc4c4;
+            margin-top: 8px;
+            text-align: center;
+            max-width: 260px;
+        }
+
+        /* модальное окно (универсальное) */
         .modal {
             display: none;
             position: fixed;
-            z-index: 1000;
+            z-index: 2000;
             left: 0;
             top: 0;
             width: 100%;
@@ -31,632 +244,367 @@
             justify-content: center;
             align-items: center;
         }
-        
+
         .modal-content {
-            max-width: 100%;
-            max-height: 100%;
+            max-width: 90vw;
+            max-height: 90vh;
             object-fit: contain;
-            animation: zoomIn 0.3s;
+            border-radius: 12px;
+            box-shadow: 0 0 25px #008080;
+            animation: fadeZoom 0.25s ease;
         }
-        
-        @keyframes zoomIn {
-            from { transform: scale(0.9); opacity: 0; }
+
+        @keyframes fadeZoom {
+            from { transform: scale(0.95); opacity: 0; }
             to { transform: scale(1); opacity: 1; }
         }
-        
-        .close {
+
+        .close-modal {
             position: absolute;
-            top: 20px;
-            right: 30px;
+            top: 25px;
+            right: 35px;
             color: white;
-            font-size: 40px;
+            font-size: 48px;
             font-weight: bold;
             cursor: pointer;
-            transition: 0.3s;
-            z-index: 1001;
-            background: rgba(0, 0, 0, 0.5);
-            width: 50px;
-            height: 50px;
+            background: rgba(0,0,0,0.6);
+            width: 55px;
+            height: 55px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            line-height: 1;
+            transition: 0.2s;
         }
-        
-        .close:hover {
-            color: #008080;
-            background: rgba(0, 0, 0, 0.7);
+
+        .close-modal:hover {
+            background: #008080;
+            color: black;
         }
-        
-        /* Стили для мобильных устройств */
-        @media (max-width: 768px) {
-            /* Адаптивный хедер */
-            #header table {
-                width: 100% !important;
-                padding: 5px !important;
-            }
-            
-            #header tr {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            
-            #header td {
-                display: block;
-                width: 100%;
-                text-align: center;
-                padding: 5px 0 !important;
-            }
-            
-            #header td:first-child {
-                order: 1;
-                width: 100%;
-            }
-            
-            #header td:nth-child(n+3) {
-                order: 2;
-                width: auto;
-                padding: 8px 5px !important;
-            }
-            
-            #header font[face="Comic Sans MS"] {
-                font-size: 24px !important;
-            }
-            
-            #header a font {
-                font-size: 16px !important;
-            }
-            
-            /* Адаптивный заголовок страницы */
-            #certificates-title table {
-                width: 100% !important;
-                padding: 10px !important;
-            }
-            
-            #certificates-title td {
-                padding: 20px 10px !important;
-                height: auto !important;
-            }
-            
-            #certificates-title font {
-                font-size: 24px !important;
-                line-height: 1.3;
-            }
-            
-            /* Адаптивная сетка грамот */
-            #certificates-grid table {
-                width: 100% !important;
-                padding: 10px !important;
-            }
-            
-            #certificates-grid tr {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            #certificates-grid td {
-                width: 100% !important;
-                max-width: 320px;
-                display: block;
-                margin-bottom: 30px;
-                text-align: center;
-                padding: 10px !important;
-            }
-            
-            .certificate-item img {
-                max-width: 100% !important;
-                height: auto !important;
-                width: 280px !important;
-                border: 3px solid #008080;
-                cursor: pointer;
-            }
-            
-            .certificate-item p {
-                font-size: 16px !important;
-                padding: 0 10px;
-                margin-top: 10px;
-            }
-            
-            /* Адаптивный подвал */
-            #certificates-footer table {
-                width: 100% !important;
-                padding: 10px !important;
-            }
-            
-            #certificates-footer td {
-                padding: 15px 10px !important;
-            }
-            
-            #certificates-footer font {
-                font-size: 16px !important;
-                text-align: justify;
-            }
-            
-            /* Адаптивное модальное окно */
-            .modal-content {
-                max-width: 100%;
-                max-height: 100%;
-            }
-            
-            .close {
-                font-size: 30px;
-                top: 15px;
-                right: 15px;
-                width: 40px;
-                height: 40px;
-            }
-            
-            /* Общие адаптивные правки */
-            .mobile-hidden {
-                display: none !important;
-            }
+
+        /* футер */
+        .footer-bg {
+            background-color: #008080;
+            padding: 20px 0;
         }
-        
-        /* Стили для очень маленьких экранов */
-        @media (max-width: 480px) {
-            #header td:nth-child(n+3) {
-                width: 50%;
-                padding: 5px !important;
-            }
-            
-            #certificates-title font {
-                font-size: 20px !important;
-            }
-            
-            .certificate-item img {
-                width: 250px !important;
-            }
-            
-            .certificate-item p font {
-                font-size: 14px !important;
-            }
-        }
-        
-        /* Стили для десктопов */
-        @media (min-width: 769px) {
-            #header table {
-                width: 90%;
-                margin: 0 auto;
-            }
-            
-            #certificates-title table,
-            #certificates-grid table,
-            #certificates-footer table {
-                width: 95%;
-                margin: 0 auto;
-            }
-            
-            .certificate-item img {
-                width: 100%;
-                max-width: 280px;
-                height: 200px;
-                object-fit: cover;
-                border: 3px solid #008080;
-                transition: transform 0.3s;
-                cursor: pointer;
-            }
-            
-            .certificate-item img:hover {
-                transform: scale(1.05);
-                border-color: #4CAF50;
-            }
-            
-            /* Равномерное распределение грамот в сетке */
-            #certificates-grid td {
-                width: 33.33% !important;
-                vertical-align: top;
-                padding: 15px !important;
-            }
-            
-            #certificates-grid tr {
-                display: table-row;
-            }
-        }
-        
-        /* Дополнительные улучшения */
-        a {
-            text-decoration: none;
-            transition: opacity 0.3s;
-        }
-        
-        a:hover {
-            opacity: 0.8;
-        }
-        
-        hr {
-            margin: 15px 0;
-            border: 1px solid #008080;
-        }
-        
-        /* Стили для грамот */
-        .certificate-item {
-            padding: 15px;
-            background-color: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-            transition: all 0.3s;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        
-        .certificate-item:hover {
-            background-color: rgba(0, 128, 128, 0.1);
-            transform: translateY(-5px);
-        }
-        
-        .certificate-item p {
-            margin-top: 15px;
-            flex-grow: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        /* Центрирование текста */
-        .center-text {
-            text-align: center;
-        }
-        
-        /* Равномерное распределение для сетки */
-        .certificates-table {
-            width: 100% !important;
-            table-layout: fixed !important;
-        }
-        
-        .certificates-table td {
-            text-align: center !important;
-            vertical-align: top !important;
-            padding: 10px !important;
-        }
-        
-        /* Заголовок для грамот без описания */
-        .certificate-title {
-            color: white;
-            font-family: Verdana, sans-serif;
-            font-size: 14px;
-            margin-top: 10px;
-            font-weight: bold;
-        }
-        
-        /* Анимация для элементов галереи */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .certificate-item {
-            animation: fadeIn 0.5s ease-out forwards;
-            opacity: 0;
-        }
-        
-        /* Стили для ссылок контактов */
+
         .contact-link a {
             color: black;
             text-decoration: none;
             font-weight: bold;
-            padding: 5px 10px;
-            border-radius: 5px;
-            background-color: rgba(255, 255, 255, 0.2);
-            transition: all 0.3s;
+            background: rgba(255,255,255,0.25);
+            padding: 5px 12px;
+            border-radius: 30px;
+            transition: 0.2s;
         }
-        
+
         .contact-link a:hover {
-            background-color: rgba(255, 255, 255, 0.4);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            background: white;
+            color: #008080;
+        }
+
+        hr {
+            border-color: #008080;
+            margin: 20px 0;
+        }
+
+        /* адаптивность */
+        @media (max-width: 768px) {
+            .container-table td {
+                display: block;
+                text-align: center;
+                padding: 8px 0;
+            }
+            .container-table tr {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .title-main {
+                font-size: 1.8rem;
+            }
+            .certificates-table td {
+                display: block;
+                width: 100% !important;
+            }
+            .certificate-item img {
+                max-width: 260px;
+                height: 180px;
+            }
+            .info-card {
+                margin: 0 15px;
+            }
+            .close-modal {
+                width: 45px;
+                height: 45px;
+                font-size: 38px;
+                top: 12px;
+                right: 20px;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .certificates-table td {
+                width: 33.33%;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Модальное окно для полноэкранного просмотра - ТОЛЬКО ИЗОБРАЖЕНИЕ -->
-    <div id="imageModal" class="modal">
-        <span class="close">&times;</span>
-        <img class="modal-content" id="modalImage">
+
+<!-- ==================== ШАПКА ==================== -->
+<table class="section-table header-bg" cellpadding="0" cellspacing="0">
+    <tr>
+        <td align="center">
+            <table class="container-table" cellpadding="10" cellspacing="0">
+                <tr>
+                    <td style="font-size: 26px; font-family: 'Comic Sans MS', cursive; font-weight: bold; color: black;">
+                        📚 Мое портфолио
+                    </td>
+                    <td width="15%"></td>
+                    <td align="center"><a href="index.html" class="nav-link">Главная</a></td>
+                    <td align="center"><a href="projects.html" class="nav-link">Грамоты</a></td>
+                    <td align="center"><a href="achievements.html" class="nav-link">Достижения</a></td>
+                    <td align="center"><a href="contact.html" class="nav-link">Контакты</a></td>
+                    <td align="center"><a href="diplom.html" class="nav-link active-page">📖 Дипломный проект</a></td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+
+<!-- ============= ЗАГОЛОВОК ДИПЛОМНОГО ПРОЕКТА ============= -->
+<div class="title-section">
+    <div class="title-main">🎓 Дипломный проект</div>
+    <div class="subtitle">«Автоматизация деятельности школьной библиотеки»</div>
+    <div class="desc-text">
+        Разработка информационной системы для учета книг, читателей, выдачи и возврата литературы.<br>
+        Проект включает веб-интерфейс, базу данных и аналитику популярных книг.
     </div>
+</div>
 
-    <!--Header(start)-->
-    <table id="header" border="0" width="100%" cellpadding="0" cellspacing="0" bgcolor="#008080">
-        <tr>
-            <td>
-                <table border="0" cellpadding="15" cellspacing="0" width="90%" align="center">
-                    <tr>
-                        <td>
-                            <font face="Comic Sans MS" size="6">
-                                <b>Мое портфолио</b>
-                            </font>
-                        </td>
-                        <td width="15%" class="mobile-hidden"></td>
-                        <td>
-                            <a href="index.html" style="text-decoration:none">
-                                <font face="Comic Sans MS" size="5" color="black">
-                                    Дома
-                                </font>
-                            </a>
-                        </td>
-                        <td class="mobile-hidden"></td>
-                        <td class="mobile-hidden"></td>
-                        <td>
-                            <a href="projects.html" style="text-decoration:none">
-                                <font face="Comic Sans MS" size="5" color="black">
-                                    Грамоты
-                                </font>
-                            </a>
-                        </td>
-                        <td class="mobile-hidden"></td>
-                        <td>
-                            <a href="achievements.html" style="text-decoration:none">
-                                <font face="Comic Sans MS" size="5" color="black">
-                                    Достижения
-                                </font>
-                            </a>
-                        </td>
-                        <td class="mobile-hidden"></td>
-                        <td>
-                            <a href="contact.html" style="text-decoration:none">
-                                <font face="Comic Sans MS" size="5" color="black">
-                                    Контакты
-                                </font>
-                            </a>
-                        </td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-    </table>
-    <!--Header(end)-->
+<!-- ============= ОПИСАНИЕ СИСТЕМЫ И ТЕХНОЛОГИЙ ============= -->
+<div class="diplom-description">
+    <div class="diplom-description-inner">
+        <div class="info-card">
+            <h3>📌 Цель и задачи</h3>
+            <p>Создать удобную автоматизированную систему для школьной библиотеки, позволяющую:</p>
+            <ul>
+                <li>✔ Управлять читателями (добавление, редактирование, поиск).</li>
+                <li>✔ Вести каталог книг с фильтрацией по жанру, автору, статусу.</li>
+                <li>✔ Оформлять выдачу и возврат книг с контролем сроков.</li>
+                <li>✔ Формировать список должников и аналитику популярных книг.</li>
+                <li>✔ Обеспечить авторизацию сотрудников.</li>
+            </ul>
+        </div>
+        <div class="info-card">
+            <h3>⚙ Технологический стек</h3>
+            <div>
+                <span class="tech-badge">Python / Django</span>
+                <span class="tech-badge">PostgreSQL</span>
+                <span class="tech-badge">HTML5 / CSS3</span>
+                <span class="tech-badge">JavaScript (чистый)</span>
+                <span class="tech-badge">Bootstrap 5</span>
+                <span class="tech-badge">Django ORM</span>
+            </div>
+            <p style="margin-top: 20px;">Интегрированная отчетность, адаптивный дизайн, безопасная аутентификация. БД содержит таблицы: читатели, книги, выдача, жанры, классы. Реализованы триггеры для контроля долгов.</p>
+        </div>
+        <div class="info-card">
+            <h3>📊 Результаты внедрения</h3>
+            <ul>
+                <li>📈 Сокращение времени на поиск и выдачу книг на 60%.</li>
+                <li>📋 Автоматическое формирование отчетов о должниках.</li>
+                <li>🌟 Выявление самых востребованных книг (аналитика выдач).</li>
+                <li>🖥 Удобный интерфейс для библиотекаря и администратора.</li>
+            </ul>
+        </div>
+    </div>
+</div>
 
-    <!--Certificates Title(start)-->
-    <table id="certificates-title" border="0" width="100%" cellpadding="0" cellspacing="0" bgcolor="black">
-        <tr>
-            <td>
-                <table border="0" cellpadding="15" cellspacing="0" width="80%" align="center">
-                    <tr>
-                        <td height="150" align="center" valign="middle">
-                            <font face="Verdana" size="7" color="#008080">
-                                Мои грамоты и награды
-                            </font>
-                            <br><br>
-                            <font face="Verdana" size="5" color="#4CAF50">
-                                Достижения в учебе и профессиональной деятельности
-                            </font>
-                            <br><br>
-                            <font face="Verdana" size="4" color="white">
-                                Нажмите на изображение для просмотра в полноэкранном режиме
-                            </font>
-                        </td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-</table>
-<!--Certificates Title(end)-->
+<!-- ============= ГАЛЕРЕЯ: 7 РИСУНКОВ ИЗ ПАПКИ images ============= -->
+<div class="gallery-grid">
+    <div class="gallery-wrapper">
+        <div class="gallery-title">📸 Интерфейс системы — 7 ключевых экранов</div>
+        <table class="certificates-table" cellpadding="0" cellspacing="0">
+            <!-- Ряд 1: 3 элемента + четкая структура, разместим 7 изображений: 3+3+1 (адаптивно) 
+                 но для эстетики сделаем 4-3 разбивку? На десктопе 3 колонки, будет 3+3+1, симпатично -->
+            <tr>
+                <td>
+                    <div class="certificate-item" onclick="openModal('images/Рисунок1.png')">
+                        <img src="images/Рисунок1.png" alt="Форма авторизации библиотеки" loading="lazy" onerror="this.src='https://placehold.co/400x280?text=Рисунок1+Авторизация'">
+                        <div class="fig-caption">Рисунок 1 — Авторизация</div>
+                        <div class="fig-desc">Страница входа для сотрудников</div>
+                    </div>
+                </td>
+                <td>
+                    <div class="certificate-item" onclick="openModal('images/Рисунок2.png')">
+                        <img src="images/Рисунок2.png" alt="Таблица активных выдач книг" loading="lazy" onerror="this.src='https://placehold.co/400x280?text=Рисунок2+Выдачи'">
+                        <div class="fig-caption">Рисунок 2 — Журнал выдач</div>
+                        <div class="fig-desc">Список активных экземпляров</div>
+                    </div>
+                </td>
+                <td>
+                    <div class="certificate-item" onclick="openModal('images/Рисунок3.png')">
+                        <img src="images/Рисунок3.png" alt="Управление читателями" loading="lazy" onerror="this.src='https://placehold.co/400x280?text=Рисунок3+Читатели'">
+                        <div class="fig-caption">Рисунок 3 — Управление читателями</div>
+                        <div class="fig-desc">Поиск, редактирование, класс, телефон</div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="certificate-item" onclick="openModal('images/Рисунок4.png')">
+                        <img src="images/Рисунок4.png" alt="Управление книгами" loading="lazy" onerror="this.src='https://placehold.co/400x280?text=Рисунок4+Книги'">
+                        <div class="fig-caption">Рисунок 4 — Управление книгами</div>
+                        <div class="fig-desc">Каталог: жанр, автор, статус "в наличии/выдана"</div>
+                    </div>
+                </td>
+                <td>
+                    <div class="certificate-item" onclick="openModal('images/Рисунок5.png')">
+                        <img src="images/Рисунок5.png" alt="Выдача и возврат книг" loading="lazy" onerror="this.src='https://placehold.co/400x280?text=Рисунок5+Выдача'">
+                        <div class="fig-caption">Рисунок 5 — Выдача/возврат</div>
+                        <div class="fig-desc">Операции выбора читателя и книги</div>
+                    </div>
+                </td>
+                <td>
+                    <div class="certificate-item" onclick="openModal('images/Рисунок6.png')">
+                        <img src="images/Рисунок6.png" alt="Список должников" loading="lazy" onerror="this.src='https://placehold.co/400x280?text=Рисунок6+Должники'">
+                        <div class="fig-caption">Рисунок 6 — Должники</div>
+                        <div class="fig-desc">Автоматический отчет с контактами</div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="certificate-item" onclick="openModal('images/Рисунок7.png')">
+                        <img src="images/Рисунок7.png" alt="Самые популярные книги" loading="lazy" onerror="this.src='https://placehold.co/400x280?text=Рисунок7+Популярные'">
+                        <div class="fig-caption">Рисунок 7 — Популярные книги</div>
+                        <div class="fig-desc">Статистика: топ книг по числу выдач</div>
+                    </div>
+                </td>
+                <!-- два пустых для выравнивания сетки на десктопе, не нарушает адаптив -->
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+        <div style="text-align: center; margin-top: 15px; font-size: 0.85rem; color: #aaa;">
+            * Нажмите на любое изображение для увеличения
+        </div>
+    </div>
+</div>
 
-<!--Certificates Grid(start)-->
-<table id="certificates-grid" border="0" width="100%" cellpadding="0" cellspacing="0" bgcolor="black">
+<!-- ============= ДОПОЛНИТЕЛЬНЫЙ БЛОК О ЗНАЧИМОСТИ ПРОЕКТА ============= -->
+<table class="section-table" bgcolor="black" cellpadding="0" cellspacing="0">
     <tr>
-        <td>
-            <table border="0" cellpadding="15" cellspacing="0" width="95%" align="center" class="certificates-table">
-                <!-- Первая строка грамот -->
+        <td align="center" style="padding: 35px 20px;">
+            <hr color="#008080" width="70%">
+            <font face="Verdana" size="5" color="#008080"><b>🏆 Защита диплома и перспективы</b></font><br><br>
+            <font face="Verdana" size="4" color="white">
+                Дипломный проект получил высокую оценку комиссии. Система готова к внедрению в образовательных учреждениях.
+                В планах — интеграция с электронным дневником и мобильное приложение для читателей.
+            </font><br><br>
+            <font face="Verdana" size="3" color="#4CAF50">
+                📅 2025 год · Информационные системы и технологии
+            </font>
+            <br><br>
+            <a href="#" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;" style="color:#008080;">▲ Наверх</a>
+        </td>
+    </tr>
+</table>
+
+<!-- ============= ФУТЕР ============= -->
+<table class="section-table footer-bg" cellpadding="0" cellspacing="0">
+    <tr>
+        <td align="center">
+            <table class="container-table" cellpadding="15" cellspacing="0">
                 <tr>
-                    <td width="33%">
-                        <div class="certificate-item" onclick="openModal('imges/5.jpg')" style="animation-delay: 0.1s">
-                            <img src="imges/5.jpg" alt="Курс Программирование на Python" />
-                            <p>
-                                <font face="Verdana" size="4" color="white">
-                                    <b>Курс "Программирование на Python"</b>
-                                </font>
-                            </p>
+                    <td width="33%" align="center" valign="top">
+                        <font face="Verdana" size="4" color="black"><b>📞 Телефон:</b></font><br>
+                        <div class="contact-link">
+                            <a href="tel:+79146128011">+7 (914) 612-80-11</a>
                         </div>
                     </td>
-                    
-                    <td width="33%">
-                        <div class="certificate-item" onclick="openModal('imges/7.jpg')" style="animation-delay: 0.2s">
-                            <img src="imges/7.jpg" alt="Курс Поколение Python для начинающих" />
-                            <p>
-                                <font face="Verdana" size="4" color="white">
-                                    <b>"Поколение Python" Курс для начинающих</b>
-                                </font>
-                            </p>
+                    <td width="33%" align="center" valign="top">
+                        <font face="Verdana" size="4" color="black"><b>💬 ВКонтакте:</b></font><br>
+                        <div class="contact-link">
+                            <a href="https://vk.com/danilkkaaaa" target="_blank" rel="noopener noreferrer">vk.com/danilkkaaaa</a>
                         </div>
                     </td>
-                    
-                    <td width="33%">
-                        <div class="certificate-item" onclick="openModal('imges/10.jpg')" style="animation-delay: 0.3s">
-                            <img src="imges/10.jpg" alt="IT-диктант Всероссийская образовательная акция" />
-                            <p>
-                                <font face="Verdana" size="4" color="white">
-                                    <b>"IT-диктант"</b><br>
-                                    Всероссийская образовательная акция, 2025 год
-                                </font>
-                            </p>
+                    <td width="33%" align="center" valign="top">
+                        <font face="Verdana" size="4" color="black"><b>✉ Email:</b></font><br>
+                        <div class="contact-link">
+                            <a href="mailto:Leonardov2006@yandex.ru">Leonardov2006@yandex.ru</a>
                         </div>
                     </td>
                 </tr>
-                
-                <!-- Вторая строка грамот -->
-                <tr>
-                    <td width="33%">
-                        <div class="certificate-item" onclick="openModal('imges/4.jpg')" style="animation-delay: 0.4s">
-                            <img src="imges/4.jpg" alt="Участие в уроке Технологии тестирования" />
-                            <p>
-                                <font face="Verdana" size="4" color="white">
-                                    <b>Участие в уроке "Технологии тестирования"</b><br>
-                                    Всероссийская образовательная акция "Урок цифры", 2023 год
-                                </font>
-                            </p>
-                        </div>
-                    </td>
-                    
-                    <td width="33%">
-                        <div class="certificate-item" onclick="openModal('imges/1.jpg')" style="animation-delay: 0.5s">
-                            <img src="imges/1.jpg" alt="Благодарственное письмо" />
-                            <div class="certificate-title">Благодарственное письмо</div>
-                        </div>
-                    </td>
-                    
-                    <td width="33%">
-                        <div class="certificate-item" onclick="openModal('imges/2.jpg')" style="animation-delay: 0.6s">
-                            <img src="imges/2.jpg" alt="Благодарственное письмо" />
-                            <div class="certificate-title">Благодарственное письмо</div>
-                        </div>
-                    </td>
-                </tr>
-                
-                <!-- Третья строка грамот -->
-                <tr>
-                    <td width="33%">
-                        <div class="certificate-item" onclick="openModal('imges/3.jpg')" style="animation-delay: 0.7s">
-                            <img src="imges/3.jpg" alt="Благодарственное письмо" />
-                            <div class="certificate-title">Благодарственное письмо</div>
-                        </div>
-                    </td>
-                    
-                    <td width="33%">
-                        <div class="certificate-item" onclick="openModal('imges/8.jpg')" style="animation-delay: 0.8s">
-                            <img src="imges/8.jpg" alt="Благодарственное письмо" />
-                            <div class="certificate-title">Благодарственное письмо</div>
-                        </div>
-                    </td>
-                    
-                    <td width="33%">
-                        <div class="certificate-item" onclick="openModal('imges/9.jpg')" style="animation-delay: 0.9s">
-                            <img src="imges/9.jpg" alt="Сертификат по SQL" />
-                            <p>
-                                <font face="Verdana" size="4" color="white">
-                                    <b>Сертификат по SQL</b><br>
-                                    Успешное завершение курса, 2024 год
-                                </font>
-                            </p>
-                        </div>
-                    </td>
-                </tr>
+                <tr><td colspan="3" align="center" style="padding-top: 10px; font-size:12px;">© 2025 Портфолио | Дипломный проект "Школьная библиотека"</td></tr>
             </table>
         </td>
     </tr>
 </table>
-<!--Certificates Grid(end)-->
 
-<!--Certificates Footer(start)-->
-<table id="certificates-footer" border="0" width="100%" cellpadding="0" cellspacing="0" bgcolor="black">
-    <tr>
-        <td>
-            <table border="0" cellpadding="15" cellspacing="0" width="80%" align="center">
-                <tr>
-                    <td align="center" valign="middle">
-                        <hr color="#008080" />
-                        <font face="Verdana" size="5" color="white">
-                            <b>Важность достижений</b>
-                        </font>
-                        <br><br>
-                        <font face="Verdana" size="4" color="white">
-                            Каждая грамота и сертификат - это не просто бумага, а результат упорного труда и стремление к постоянному развитию. 
-                            Эти достижения подтверждают мои профессиональные компетенции и готовность 
-                            к решению сложных задач в области разработки баз данных.
-                        </font>
-                        <br><br>
-                        <font face="Verdana" size="4" color="#4CAF50">
-                            <i>"Успех - это не случайность, это результат подготовки, труда и извлечения уроков из неудач"</i>
-                        </font>
-                    </td>
-                </tr>
-            </table>
-        </td>
-    </tr>
-</table>
-<!--Certificates Footer(end)-->
+<!-- ============= МОДАЛЬНОЕ ОКНО ============= -->
+<div id="imageModal" class="modal">
+    <span class="close-modal" id="closeModalBtn">&times;</span>
+    <img class="modal-content" id="modalImage" alt="Полноэкранный режим">
+</div>
 
 <script>
-    // Получаем модальное окно
-    const modal = document.getElementById("imageModal");
-    const modalImg = document.getElementById("modalImage");
-    const closeBtn = document.getElementsByClassName("close")[0];
+    // Модальное окно (чистая работа, открытие по клику на картинку)
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImage');
+    const closeBtn = document.getElementById('closeModalBtn');
     
-    // Функция открытия модального окна - ТОЛЬКО ИЗОБРАЖЕНИЕ
-    function openModal(imageSrc) {
-        modal.style.display = "flex";
+    // Функция открытия модального окна
+    window.openModal = function(imageSrc) {
+        if (!imageSrc) return;
+        modal.style.display = 'flex';
         modalImg.src = imageSrc;
-        
-        // Предотвращаем прокрутку страницы под модальным окном
-        document.body.style.overflow = "hidden";
+        document.body.style.overflow = 'hidden';
+    };
+    
+    // Закрытие
+    function closeModal() {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
     }
     
-    // Закрытие по клику на крестик
-    closeBtn.onclick = function() {
-        modal.style.display = "none";
-        document.body.style.overflow = "auto";
-    }
+    closeBtn.onclick = closeModal;
     
-    // Закрытие по клику вне изображения
-    modal.onclick = function(event) {
-        if (event.target === modal) {
-            modal.style.display = "none";
-            document.body.style.overflow = "auto";
-        }
-    }
-    
-    // Закрытие по нажатию клавиши Escape
-    document.addEventListener('keydown', function(event) {
-        if (event.key === 'Escape' && modal.style.display === "flex") {
-            modal.style.display = "none";
-            document.body.style.overflow = "auto";
+    // клик по фону (затемнению) — закрыть
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+            closeModal();
         }
     });
     
-    // Закрытие по нажатию на само изображение (опционально)
-    modalImg.onclick = function(event) {
-        event.stopPropagation();
-        modal.style.display = "none";
-        document.body.style.overflow = "auto";
-    }
+    // нажатие Escape
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.style.display === 'flex') {
+            closeModal();
+        }
+    });
     
-    // Анимация для элементов галереи при загрузке
-    document.addEventListener('DOMContentLoaded', function() {
-        const certificateItems = document.querySelectorAll('.certificate-item');
-        certificateItems.forEach((item, index) => {
-            item.style.animationDelay = `${index * 0.1}s`;
+    // дополнительно: если изображение загружается с ошибкой, подставляем плейсхолдер,
+    // но уже onerror в img предусмотрен. пользователь сам добавит картинки в папку images
+    // скрипт для плавной загрузки галереи
+    console.log('Дипломный проект: 7 схем интерфейса школьной библиотеки');
+    
+    // небольшая адаптация для пунктов меню: подсветка активной страницы уже задана через класс active-page
+    // дополнительная обработка для ссылок, чтобы перехода не было на ту же страницу диплома (оставляем)
+    // анимация появления элементов
+    const items = document.querySelectorAll('.certificate-item');
+    if (items.length) {
+        items.forEach((item, idx) => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(10px)';
+            item.style.transition = 'opacity 0.4s ease, transform 0.3s ease';
+            setTimeout(() => {
+                item.style.opacity = '1';
+                item.style.transform = 'translateY(0)';
+            }, idx * 80);
         });
-    });
+    }
 </script>
-    <!--Footer(start)-->
-    <table id="footer" border="0" width="100%" cellpadding="0" cellspacing="0" bgcolor="#008080">
-        <tr>
-            <td>
-                <table border="0" cellpadding="15" cellspacing="0" width="90%" align="center">
-                    <tr>
-                        <td width="33%" align="center" valign="top">
-                            <font face="Verdana" size="4" color="black">
-                                <b>Телефон:</b><br>
-                                <div class="contact-link">
-                                    <a href="tel:+79146128011">+7 (914) 612-80-11</a>
-                                </div>
-                            </font>
-                        </td>
-
-                        <td width="33%" align="center" valign="top">
-                            <font face="Verdana" size="4" color="black">
-                                <b>ВКонтакте:</b><br>
-                                <div class="contact-link">
-                                    <a href="https://vk.com/danilkkaaaa" target="_blank" rel="noopener noreferrer">vk.com/danilkkaaaa</a>
-                                </div>
-                            </font>
-                        </td>
-
-                        <td width="33%" align="center" valign="top">
-                            <font face="Verdana" size="4" color="black">
-                                <b>Email:</b><br>
-                                <div class="contact-link">
-                                    <a href="mailto:Leonardov2006@yandex.ru">Leonardov2006@yandex.ru</a>
-                                </div>
-                            </font>
-                        </td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-    </table>
 </body>
 </html>
