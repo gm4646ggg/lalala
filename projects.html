@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Дипломный проект - Автоматизация школьной библиотеки</title>
+    <title>Мои достижения — Портфолио</title>
     <style>
         * {
             margin: 0;
@@ -18,7 +18,6 @@
             line-height: 1.5;
         }
 
-        /* общие стили для таблиц-контейнеров (сохранение структуры как в оригинале) */
         .section-table {
             width: 100%;
             border-collapse: collapse;
@@ -30,7 +29,6 @@
             border-collapse: collapse;
         }
 
-        /* шапка */
         .header-bg {
             background-color: #008080;
         }
@@ -59,98 +57,28 @@
             padding: 4px 14px;
         }
 
-        /* заголовок раздела */
-        .title-section {
+        .section-title {
             background-color: black;
-            padding: 40px 20px;
+            padding: 40px 20px 20px;
             text-align: center;
         }
 
-        .title-main {
+        .main-title {
             font-size: 2.2rem;
             color: #008080;
             font-weight: bold;
             letter-spacing: 1px;
         }
 
-        .subtitle {
-            font-size: 1.3rem;
+        .subhead {
+            font-size: 1.2rem;
             color: #4CAF50;
-            margin-top: 10px;
+            margin-top: 8px;
         }
 
-        .desc-text {
-            font-size: 1rem;
-            max-width: 900px;
-            margin: 20px auto 0;
-            color: #ddd;
-            padding: 0 15px;
-        }
-
-        /* описание дипломной работы */
-        .diplom-description {
-            background: #0a0f0f;
-            border-top: 2px solid #008080;
-            border-bottom: 2px solid #008080;
-            padding: 30px 20px;
-        }
-
-        .diplom-description-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
-            justify-content: center;
-        }
-
-        .info-card {
-            background: #111;
-            border-radius: 24px;
-            padding: 20px 25px;
-            width: 100%;
-            max-width: 550px;
-            box-shadow: 0 8px 20px rgba(0,128,128,0.2);
-            transition: all 0.2s;
-        }
-
-        .info-card h3 {
-            color: #008080;
-            margin-bottom: 15px;
-            font-size: 1.5rem;
-            border-left: 4px solid #4CAF50;
-            padding-left: 12px;
-        }
-
-        .info-card p, .info-card li {
-            color: #ccc;
-            font-size: 0.96rem;
-        }
-
-        .info-card ul {
-            margin-left: 20px;
-            margin-top: 10px;
-        }
-
-        .info-card li {
-            margin: 8px 0;
-        }
-
-        .tech-badge {
-            display: inline-block;
-            background: #1e2a2a;
-            color: #b0e0e0;
-            border-radius: 40px;
-            padding: 6px 14px;
-            margin: 5px 8px 5px 0;
-            font-size: 0.85rem;
-            font-weight: bold;
-        }
-
-        /* сетка изображений (аналогично грамотам, но с подписями) */
         .gallery-grid {
             background-color: black;
-            padding: 40px 20px;
+            padding: 30px 20px;
         }
 
         .gallery-wrapper {
@@ -164,6 +92,10 @@
             color: #008080;
             margin-bottom: 30px;
             font-weight: bold;
+            border-bottom: 2px solid #008080;
+            display: inline-block;
+            width: auto;
+            padding-bottom: 8px;
         }
 
         .certificates-table {
@@ -224,14 +156,84 @@
         }
 
         .fig-desc {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: #9bc4c4;
-            margin-top: 8px;
+            margin-top: 6px;
             text-align: center;
             max-width: 260px;
         }
 
-        /* модальное окно (универсальное) */
+        .diplom-block {
+            background: #0a0f0f;
+            border-top: 3px solid #008080;
+            border-bottom: 3px solid #008080;
+            margin-top: 20px;
+            padding: 40px 20px;
+        }
+
+        .diplom-inner {
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .diplom-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .diplom-header h2 {
+            font-size: 2rem;
+            color: #008080;
+        }
+
+        .diplom-header p {
+            font-size: 1rem;
+            color: #ccc;
+            max-width: 800px;
+            margin: 10px auto;
+        }
+
+        .info-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+            margin-bottom: 50px;
+        }
+
+        .info-card {
+            background: #111;
+            border-radius: 24px;
+            padding: 20px 25px;
+            width: 100%;
+            max-width: 550px;
+            box-shadow: 0 8px 20px rgba(0,128,128,0.2);
+        }
+
+        .info-card h3 {
+            color: #008080;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+            border-left: 4px solid #4CAF50;
+            padding-left: 12px;
+        }
+
+        .info-card p, .info-card li {
+            color: #ccc;
+            font-size: 0.95rem;
+        }
+
+        .tech-badge {
+            display: inline-block;
+            background: #1e2a2a;
+            color: #b0e0e0;
+            border-radius: 40px;
+            padding: 6px 14px;
+            margin: 5px 8px 5px 0;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
         .modal {
             display: none;
             position: fixed;
@@ -282,7 +284,6 @@
             color: black;
         }
 
-        /* футер */
         .footer-bg {
             background-color: #008080;
             padding: 20px 0;
@@ -308,7 +309,6 @@
             margin: 20px 0;
         }
 
-        /* адаптивность */
         @media (max-width: 768px) {
             .container-table td {
                 display: block;
@@ -320,7 +320,7 @@
                 flex-wrap: wrap;
                 justify-content: center;
             }
-            .title-main {
+            .main-title {
                 font-size: 1.8rem;
             }
             .certificates-table td {
@@ -359,160 +359,233 @@
             <table class="container-table" cellpadding="10" cellspacing="0">
                 <tr>
                     <td style="font-size: 26px; font-family: 'Comic Sans MS', cursive; font-weight: bold; color: black;">
-                        📚 Мое портфолио
+                        🏆 Мое портфолио
                     </td>
                     <td width="15%"></td>
                     <td align="center"><a href="index.html" class="nav-link">Главная</a></td>
                     <td align="center"><a href="projects.html" class="nav-link">Грамоты</a></td>
-                    <td align="center"><a href="achievements.html" class="nav-link">Достижения</a></td>
+                    <td align="center"><a href="achievements.html" class="nav-link active-page">Достижения</a></td>
                     <td align="center"><a href="contact.html" class="nav-link">Контакты</a></td>
-                    <td align="center"><a href="diplom.html" class="nav-link active-page">📖 Дипломный проект</a></td>
                 </tr>
             </table>
         </td>
     </tr>
 </table>
 
-<!-- ============= ЗАГОЛОВОК ДИПЛОМНОГО ПРОЕКТА ============= -->
-<div class="title-section">
-    <div class="title-main">🎓 Дипломный проект</div>
-    <div class="subtitle">«Автоматизация деятельности школьной библиотеки»</div>
-    <div class="desc-text">
-        Разработка информационной системы для учета книг, читателей, выдачи и возврата литературы.<br>
-        Проект включает веб-интерфейс, базу данных и аналитику популярных книг.
-    </div>
+<!-- ============= ЗАГОЛОВОК ============= -->
+<div class="section-title">
+    <div class="main-title">✨ Мои достижения</div>
+    <div class="subhead">Профессиональное развитие, сертификаты и дипломный проект</div>
 </div>
 
-<!-- ============= ОПИСАНИЕ СИСТЕМЫ И ТЕХНОЛОГИЙ ============= -->
-<div class="diplom-description">
-    <div class="diplom-description-inner">
-        <div class="info-card">
-            <h3>📌 Цель и задачи</h3>
-            <p>Создать удобную автоматизированную систему для школьной библиотеки, позволяющую:</p>
-            <ul>
-                <li>✔ Управлять читателями (добавление, редактирование, поиск).</li>
-                <li>✔ Вести каталог книг с фильтрацией по жанру, автору, статусу.</li>
-                <li>✔ Оформлять выдачу и возврат книг с контролем сроков.</li>
-                <li>✔ Формировать список должников и аналитику популярных книг.</li>
-                <li>✔ Обеспечить авторизацию сотрудников.</li>
-            </ul>
-        </div>
-        <div class="info-card">
-            <h3>⚙ Технологический стек</h3>
-            <div>
-                <span class="tech-badge">Python / Django</span>
-                <span class="tech-badge">PostgreSQL</span>
-                <span class="tech-badge">HTML5 / CSS3</span>
-                <span class="tech-badge">JavaScript (чистый)</span>
-                <span class="tech-badge">Bootstrap 5</span>
-                <span class="tech-badge">Django ORM</span>
-            </div>
-            <p style="margin-top: 20px;">Интегрированная отчетность, адаптивный дизайн, безопасная аутентификация. БД содержит таблицы: читатели, книги, выдача, жанры, классы. Реализованы триггеры для контроля долгов.</p>
-        </div>
-        <div class="info-card">
-            <h3>📊 Результаты внедрения</h3>
-            <ul>
-                <li>📈 Сокращение времени на поиск и выдачу книг на 60%.</li>
-                <li>📋 Автоматическое формирование отчетов о должниках.</li>
-                <li>🌟 Выявление самых востребованных книг (аналитика выдач).</li>
-                <li>🖥 Удобный интерфейс для библиотекаря и администратора.</li>
-            </ul>
-        </div>
-    </div>
-</div>
-
-<!-- ============= ГАЛЕРЕЯ: 7 РИСУНКОВ ИЗ ПАПКИ images ============= -->
+<!-- ============= БЛОК 1: ГРАМОТЫ И СЕРТИФИКАТЫ ============= -->
 <div class="gallery-grid">
     <div class="gallery-wrapper">
-        <div class="gallery-title">📸 Интерфейс системы — 7 ключевых экранов</div>
+        <div style="text-align: center;">
+            <div class="gallery-title">📜 Грамоты & сертификаты</div>
+        </div>
         <table class="certificates-table" cellpadding="0" cellspacing="0">
-            <!-- Ряд 1: 3 элемента + четкая структура, разместим 7 изображений: 3+3+1 (адаптивно) 
-                 но для эстетики сделаем 4-3 разбивку? На десктопе 3 колонки, будет 3+3+1, симпатично -->
+            <tr>
+                <td>
+                    <div class="certificate-item" onclick="openModal('imges/5.jpg')">
+                        <img src="imges/5.jpg" alt="Python курс" onerror="this.src='https://placehold.co/400x280?text=Python+Course'">
+                        <div class="fig-caption">Python-разработка</div>
+                        <div class="fig-desc">Курс «Программирование на Python», углубленный уровень</div>
+                    </div>
+                </td>
+                <td>
+                    <div class="certificate-item" onclick="openModal('imges/7.jpg')">
+                        <img src="imges/7.jpg" alt="Поколение Python" onerror="this.src='https://placehold.co/400x280?text=Python+Beginner'">
+                        <div class="fig-caption">Поколение Python</div>
+                        <div class="fig-desc">Сертификат для начинающих</div>
+                    </div>
+                </td>
+                <td>
+                    <div class="certificate-item" onclick="openModal('imges/10.jpg')">
+                        <img src="imges/10.jpg" alt="IT-диктант" onerror="this.src='https://placehold.co/400x280?text=IT+dictation'">
+                        <div class="fig-caption">IT-диктант 2025</div>
+                        <div class="fig-desc">Всероссийская образовательная акция</div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="certificate-item" onclick="openModal('imges/4.jpg')">
+                        <img src="imges/4.jpg" alt="Урок цифры" onerror="this.src='https://placehold.co/400x280?text=Lesson+of+Digital'">
+                        <div class="fig-caption">Урок цифры</div>
+                        <div class="fig-desc">«Технологии тестирования», 2023</div>
+                    </div>
+                </td>
+                <td>
+                    <div class="certificate-item" onclick="openModal('imges/1.jpg')">
+                        <img src="imges/1.jpg" alt="Благодарность 1" onerror="this.src='https://placehold.co/400x280?text=Thanks+letter'">
+                        <div class="fig-caption">Благодарность</div>
+                        <div class="fig-desc">За олимпиады по информатике</div>
+                    </div>
+                </td>
+                <td>
+                    <div class="certificate-item" onclick="openModal('imges/2.jpg')">
+                        <img src="imges/2.jpg" alt="Благодарность 2" onerror="this.src='https://placehold.co/400x280?text=Thanks+letter+2'">
+                        <div class="fig-caption">Благодарность</div>
+                        <div class="fig-desc">Вклад в IT-сообщество школы</div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="certificate-item" onclick="openModal('imges/3.jpg')">
+                        <img src="imges/3.jpg" alt="Почетная грамота" onerror="this.src='https://placehold.co/400x280?text=Thanks+letter+3'">
+                        <div class="fig-caption">Почетная грамота</div>
+                        <div class="fig-desc">За отличную учебу и проекты</div>
+                    </div>
+                </td>
+                <td>
+                    <div class="certificate-item" onclick="openModal('imges/8.jpg')">
+                        <img src="imges/8.jpg" alt="Наставничество" onerror="this.src='https://placehold.co/400x280?text=Mentoring'">
+                        <div class="fig-caption">Наставничество</div>
+                        <div class="fig-desc">Помощь младшим в алгоритмах</div>
+                    </div>
+                </td>
+                <td>
+                    <div class="certificate-item" onclick="openModal('imges/9.jpg')">
+                        <img src="imges/9.jpg" alt="SQL сертификат" onerror="this.src='https://placehold.co/400x280?text=SQL+Certificate'">
+                        <div class="fig-caption">Продвинутый SQL</div>
+                        <div class="fig-desc">Курс по базам данных, 2024</div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <div style="text-align: center; margin-top: 10px; font-size: 0.8rem; color: #aaa;">* нажмите на изображение для увеличения</div>
+    </div>
+</div>
+
+<!-- ============= БЛОК 2: ДИПЛОМНЫЙ ПРОЕКТ (7 рисунков из папки images) ============= -->
+<div class="diplom-block">
+    <div class="diplom-inner">
+        <div class="diplom-header">
+            <h2>🎓 Дипломный проект: «Автоматизация школьной библиотеки»</h2>
+            <p>Информационная система для учёта книг, читателей, выдачи и возврата.</p>
+        </div>
+
+        <!-- карточки с описанием -->
+        <div class="info-cards">
+            <div class="info-card">
+                <h3>📌 Задачи системы</h3>
+                <ul>
+                    <li>✔ Управление читателями (поиск, добавление, класс, телефон)</li>
+                    <li>✔ Каталог книг с фильтрацией по жанру, автору, статусу</li>
+                    <li>✔ Оформление выдачи и возврата с контролем сроков</li>
+                    <li>✔ Формирование списка должников и аналитика популярных книг</li>
+                    <li>✔ Авторизация библиотекаря</li>
+                </ul>
+            </div>
+            <div class="info-card">
+                <h3>⚙ Технологический стек</h3>
+                <div>
+                    <span class="tech-badge">Python / Django</span>
+                    <span class="tech-badge">PostgreSQL</span>
+                    <span class="tech-badge">HTML5/CSS3</span>
+                    <span class="tech-badge">JavaScript (ES6)</span>
+                    <span class="tech-badge">Bootstrap 5</span>
+                </div>
+                <p style="margin-top: 20px;">Трёхуровневая архитектура, адаптивный интерфейс, триггеры для просрочек.</p>
+            </div>
+            <div class="info-card">
+                <h3>📊 Результаты внедрения</h3>
+                <ul>
+                    <li>📈 Сокращение времени на поиск книг на 60%</li>
+                    <li>📋 Автоматические отчёты о должниках</li>
+                    <li>🌟 Топ самых популярных книг</li>
+                    <li>🖥 Удобный интерфейс для библиотекаря</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ГАЛЕРЕЯ 7 ИЗОБРАЖЕНИЙ: пути прописаны НОРМАЛЬНО images/Рисунок1.png ... Рисунок7.png -->
+        <div class="gallery-title" style="margin: 20px auto 30px; display: table;">📸 Интерфейс системы (7 ключевых экранов)</div>
+        <table class="certificates-table" cellpadding="0" cellspacing="0">
             <tr>
                 <td>
                     <div class="certificate-item" onclick="openModal('images/Рисунок1.png')">
-                        <img src="images/Рисунок1.png" alt="Форма авторизации библиотеки" loading="lazy" onerror="this.src='https://placehold.co/400x280?text=Рисунок1+Авторизация'">
-                        <div class="fig-caption">Рисунок 1 — Авторизация</div>
+                        <img src="images/Рисунок1.png" alt="Авторизация" onerror="this.src='https://placehold.co/400x280?text=Рисунок1+Авторизация'">
+                        <div class="fig-caption">Рис. 1 — Авторизация</div>
                         <div class="fig-desc">Страница входа для сотрудников</div>
                     </div>
                 </td>
                 <td>
                     <div class="certificate-item" onclick="openModal('images/Рисунок2.png')">
-                        <img src="images/Рисунок2.png" alt="Таблица активных выдач книг" loading="lazy" onerror="this.src='https://placehold.co/400x280?text=Рисунок2+Выдачи'">
-                        <div class="fig-caption">Рисунок 2 — Журнал выдач</div>
-                        <div class="fig-desc">Список активных экземпляров</div>
+                        <img src="images/Рисунок2.png" alt="Журнал выдач" onerror="this.src='https://placehold.co/400x280?text=Рисунок2+Выдачи'">
+                        <div class="fig-caption">Рис. 2 — Журнал выдач</div>
+                        <div class="fig-desc">Активные выдачи с датами</div>
                     </div>
                 </td>
                 <td>
                     <div class="certificate-item" onclick="openModal('images/Рисунок3.png')">
-                        <img src="images/Рисунок3.png" alt="Управление читателями" loading="lazy" onerror="this.src='https://placehold.co/400x280?text=Рисунок3+Читатели'">
-                        <div class="fig-caption">Рисунок 3 — Управление читателями</div>
-                        <div class="fig-desc">Поиск, редактирование, класс, телефон</div>
+                        <img src="images/Рисунок3.png" alt="Управление читателями" onerror="this.src='https://placehold.co/400x280?text=Рисунок3+Читатели'">
+                        <div class="fig-caption">Рис. 3 — Читатели</div>
+                        <div class="fig-desc">Поиск, класс, телефон, дата рождения</div>
                     </div>
                 </td>
             </tr>
             <tr>
                 <td>
                     <div class="certificate-item" onclick="openModal('images/Рисунок4.png')">
-                        <img src="images/Рисунок4.png" alt="Управление книгами" loading="lazy" onerror="this.src='https://placehold.co/400x280?text=Рисунок4+Книги'">
-                        <div class="fig-caption">Рисунок 4 — Управление книгами</div>
-                        <div class="fig-desc">Каталог: жанр, автор, статус "в наличии/выдана"</div>
+                        <img src="images/Рисунок4.png" alt="Каталог книг" onerror="this.src='https://placehold.co/400x280?text=Рисунок4+Книги'">
+                        <div class="fig-caption">Рис. 4 — Каталог книг</div>
+                        <div class="fig-desc">Название, автор, жанр, статус</div>
                     </div>
                 </td>
                 <td>
                     <div class="certificate-item" onclick="openModal('images/Рисунок5.png')">
-                        <img src="images/Рисунок5.png" alt="Выдача и возврат книг" loading="lazy" onerror="this.src='https://placehold.co/400x280?text=Рисунок5+Выдача'">
-                        <div class="fig-caption">Рисунок 5 — Выдача/возврат</div>
-                        <div class="fig-desc">Операции выбора читателя и книги</div>
+                        <img src="images/Рисунок5.png" alt="Выдача и возврат" onerror="this.src='https://placehold.co/400x280?text=Рисунок5+Выдача'">
+                        <div class="fig-caption">Рис. 5 — Выдача/возврат</div>
+                        <div class="fig-desc">Выбор читателя и книги</div>
                     </div>
                 </td>
                 <td>
                     <div class="certificate-item" onclick="openModal('images/Рисунок6.png')">
-                        <img src="images/Рисунок6.png" alt="Список должников" loading="lazy" onerror="this.src='https://placehold.co/400x280?text=Рисунок6+Должники'">
-                        <div class="fig-caption">Рисунок 6 — Должники</div>
-                        <div class="fig-desc">Автоматический отчет с контактами</div>
+                        <img src="images/Рисунок6.png" alt="Список должников" onerror="this.src='https://placehold.co/400x280?text=Рисунок6+Должники'">
+                        <div class="fig-caption">Рис. 6 — Должники</div>
+                        <div class="fig-desc">Автоматический отчёт с телефонами</div>
                     </div>
                 </td>
             </tr>
             <tr>
                 <td>
                     <div class="certificate-item" onclick="openModal('images/Рисунок7.png')">
-                        <img src="images/Рисунок7.png" alt="Самые популярные книги" loading="lazy" onerror="this.src='https://placehold.co/400x280?text=Рисунок7+Популярные'">
-                        <div class="fig-caption">Рисунок 7 — Популярные книги</div>
-                        <div class="fig-desc">Статистика: топ книг по числу выдач</div>
+                        <img src="images/Рисунок7.png" alt="Популярные книги" onerror="this.src='https://placehold.co/400x280?text=Рисунок7+Популярные'">
+                        <div class="fig-caption">Рис. 7 — Топ книг</div>
+                        <div class="fig-desc">Статистика выдач</div>
                     </div>
                 </td>
-                <!-- два пустых для выравнивания сетки на десктопе, не нарушает адаптив -->
-                <td></td>
-                <td></td>
+                <td colspan="2"></td>
             </tr>
         </table>
-        <div style="text-align: center; margin-top: 15px; font-size: 0.85rem; color: #aaa;">
-            * Нажмите на любое изображение для увеличения
+        <div style="text-align: center; margin-top: 15px;">
+            <span style="background: #1a2a2a; padding: 6px 16px; border-radius: 40px; font-size: 0.8rem;">💡 Все изображения кликабельны — открываются в полном размере</span>
+        </div>
+        <div style="text-align: center; margin-top: 35px;">
+            <a href="#" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;" style="color:#008080; font-weight: bold;">▲ Вернуться к началу</a>
         </div>
     </div>
 </div>
 
-<!-- ============= ДОПОЛНИТЕЛЬНЫЙ БЛОК О ЗНАЧИМОСТИ ПРОЕКТА ============= -->
+<!-- итоговая подпись -->
 <table class="section-table" bgcolor="black" cellpadding="0" cellspacing="0">
     <tr>
-        <td align="center" style="padding: 35px 20px;">
-            <hr color="#008080" width="70%">
-            <font face="Verdana" size="5" color="#008080"><b>🏆 Защита диплома и перспективы</b></font><br><br>
-            <font face="Verdana" size="4" color="white">
-                Дипломный проект получил высокую оценку комиссии. Система готова к внедрению в образовательных учреждениях.
-                В планах — интеграция с электронным дневником и мобильное приложение для читателей.
-            </font><br><br>
-            <font face="Verdana" size="3" color="#4CAF50">
-                📅 2025 год · Информационные системы и технологии
+        <td align="center" style="padding: 30px 20px;">
+            <hr color="#008080" width="60%">
+            <font face="Verdana" size="4" color="#4CAF50"><b>🏅 Защита дипломной работы — оценка «отлично»</b></font><br><br>
+            <font face="Verdana" size="3" color="#ddd">
+                Система рекомендована к внедрению в школьных библиотеках. Планируется интеграция с электронным дневником.
             </font>
             <br><br>
-            <a href="#" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;" style="color:#008080;">▲ Наверх</a>
+            <font face="Verdana" size="2" color="#888">2025 · Специальность «Информационные системы и технологии»</font>
         </td>
     </tr>
 </table>
 
-<!-- ============= ФУТЕР ============= -->
+<!-- ==================== ФУТЕР ==================== -->
 <table class="section-table footer-bg" cellpadding="0" cellspacing="0">
     <tr>
         <td align="center">
@@ -520,42 +593,34 @@
                 <tr>
                     <td width="33%" align="center" valign="top">
                         <font face="Verdana" size="4" color="black"><b>📞 Телефон:</b></font><br>
-                        <div class="contact-link">
-                            <a href="tel:+79146128011">+7 (914) 612-80-11</a>
-                        </div>
+                        <div class="contact-link"><a href="tel:+79146128011">+7 (914) 612-80-11</a></div>
                     </td>
                     <td width="33%" align="center" valign="top">
                         <font face="Verdana" size="4" color="black"><b>💬 ВКонтакте:</b></font><br>
-                        <div class="contact-link">
-                            <a href="https://vk.com/danilkkaaaa" target="_blank" rel="noopener noreferrer">vk.com/danilkkaaaa</a>
-                        </div>
+                        <div class="contact-link"><a href="https://vk.com/danilkkaaaa" target="_blank" rel="noopener noreferrer">vk.com/danilkkaaaa</a></div>
                     </td>
                     <td width="33%" align="center" valign="top">
                         <font face="Verdana" size="4" color="black"><b>✉ Email:</b></font><br>
-                        <div class="contact-link">
-                            <a href="mailto:Leonardov2006@yandex.ru">Leonardov2006@yandex.ru</a>
-                        </div>
+                        <div class="contact-link"><a href="mailto:Leonardov2006@yandex.ru">Leonardov2006@yandex.ru</a></div>
                     </td>
                 </tr>
-                <tr><td colspan="3" align="center" style="padding-top: 10px; font-size:12px;">© 2025 Портфолио | Дипломный проект "Школьная библиотека"</td></tr>
+                <tr><td colspan="3" align="center" style="padding-top: 10px; font-size:12px;">© 2025 Портфолио | Дипломный проект в разделе достижений</td></tr>
             </table>
         </td>
     </tr>
 </table>
 
-<!-- ============= МОДАЛЬНОЕ ОКНО ============= -->
+<!-- ==================== МОДАЛЬНОЕ ОКНО ==================== -->
 <div id="imageModal" class="modal">
     <span class="close-modal" id="closeModalBtn">&times;</span>
-    <img class="modal-content" id="modalImage" alt="Полноэкранный режим">
+    <img class="modal-content" id="modalImage" alt="Полноэкранный просмотр">
 </div>
 
 <script>
-    // Модальное окно (чистая работа, открытие по клику на картинку)
     const modal = document.getElementById('imageModal');
     const modalImg = document.getElementById('modalImage');
     const closeBtn = document.getElementById('closeModalBtn');
     
-    // Функция открытия модального окна
     window.openModal = function(imageSrc) {
         if (!imageSrc) return;
         modal.style.display = 'flex';
@@ -563,48 +628,30 @@
         document.body.style.overflow = 'hidden';
     };
     
-    // Закрытие
     function closeModal() {
         modal.style.display = 'none';
         document.body.style.overflow = 'auto';
     }
     
     closeBtn.onclick = closeModal;
-    
-    // клик по фону (затемнению) — закрыть
     modal.addEventListener('click', function(e) {
-        if (e.target === modal) {
-            closeModal();
-        }
+        if (e.target === modal) closeModal();
     });
-    
-    // нажатие Escape
     document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && modal.style.display === 'flex') {
-            closeModal();
-        }
+        if (e.key === 'Escape' && modal.style.display === 'flex') closeModal();
     });
     
-    // дополнительно: если изображение загружается с ошибкой, подставляем плейсхолдер,
-    // но уже onerror в img предусмотрен. пользователь сам добавит картинки в папку images
-    // скрипт для плавной загрузки галереи
-    console.log('Дипломный проект: 7 схем интерфейса школьной библиотеки');
-    
-    // небольшая адаптация для пунктов меню: подсветка активной страницы уже задана через класс active-page
-    // дополнительная обработка для ссылок, чтобы перехода не было на ту же страницу диплома (оставляем)
-    // анимация появления элементов
+    // плавное появление элементов
     const items = document.querySelectorAll('.certificate-item');
-    if (items.length) {
-        items.forEach((item, idx) => {
-            item.style.opacity = '0';
-            item.style.transform = 'translateY(10px)';
-            item.style.transition = 'opacity 0.4s ease, transform 0.3s ease';
-            setTimeout(() => {
-                item.style.opacity = '1';
-                item.style.transform = 'translateY(0)';
-            }, idx * 80);
-        });
-    }
+    items.forEach((item, idx) => {
+        item.style.opacity = '0';
+        item.style.transform = 'translateY(8px)';
+        item.style.transition = 'opacity 0.4s ease, transform 0.3s ease';
+        setTimeout(() => {
+            item.style.opacity = '1';
+            item.style.transform = 'translateY(0)';
+        }, idx * 60);
+    });
 </script>
 </body>
 </html>
